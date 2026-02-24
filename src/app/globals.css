@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:ital,wght@0,400;0,600;1,400&family=Raleway:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #1B2A4A;
+  --color-navy-light: #2C4A7C;
+  --color-gold: #C8A84E;
+  --color-gold-light: #D4B96A;
+  --color-cream: #F5F0E8;
+  --color-parchment: #FAF7F2;
+  --color-charcoal: #1A1A2E;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-script: 'Cormorant Garamond', cursive;
+  --font-body: 'Lora', Georgia, serif;
+  --font-ui: 'Raleway', sans-serif;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background: var(--color-parchment);
+  overflow-x: hidden;
+}
+
+/* Gold shimmer button effect */
+.btn-gold {
+  background: linear-gradient(90deg, #C8A84E, #D4B96A, #C8A84E);
+  background-size: 200% 100%;
+  color: #1B2A4A;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  padding: 0.875rem 2.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.btn-gold:hover {
+  background-position: 100% 0;
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(200, 168, 78, 0.35);
+}
+
+.btn-ghost {
+  border: 1.5px solid #C8A84E;
+  color: #C8A84E;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  padding: 0.875rem 2.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.btn-ghost:hover {
+  background: rgba(200, 168, 78, 0.1);
+  transform: scale(1.02);
+}
+
+/* Gold divider */
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C8A84E, #D4B96A, #C8A84E, transparent);
+  border: none;
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C8A84E;
+}
+
+/* Starfield background */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.starfield .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--duration, 3s) ease-in-out infinite alternate;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.8; }
+}
+
+/* Gold particles */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  50% {
+    transform: translateY(-100px) translateX(30px);
+  }
+}
+
+.gold-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #C8A84E;
+  border-radius: 50%;
+  animation: float-particle var(--duration, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+
+/* Scroll indicator */
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.6; }
+}
+
+.scroll-indicator {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* Grain texture */
+.grain-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card hover */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(27, 42, 74, 0.12);
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #C8A84E;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Testimonial card */
+.testimonial-card {
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: #C8A84E;
+  opacity: 0.4;
+  line-height: 1;
+}
