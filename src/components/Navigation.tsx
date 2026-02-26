@@ -38,7 +38,7 @@ export default function Navigation() {
         <a href="/" className="flex items-center gap-3">
           <Logo
             className={`transition-all duration-300 ${
-              scrolled ? "w-10 h-10" : "w-12 h-12"
+              scrolled ? "w-12 h-12" : "w-16 h-16"
             }`}
           />
           <div className="flex flex-col">

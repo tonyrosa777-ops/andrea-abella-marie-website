@@ -92,7 +92,7 @@ export default function Hero() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mb-8"
         >
-          <Logo className="w-40 h-36 mx-auto" />
+          <Logo className="w-56 h-52 mx-auto" />
         </motion.div>
 
         {/* Headline */}
