@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
 const products = [
-  { name: "Resilience T-Shirt", price: "$28", category: "Apparel" },
-  { name: "Healing Mug", price: "$18", category: "Everyday" },
-  { name: "Mindful Water Bottle", price: "$30", category: "Wellness" },
-  { name: "Spiral Journal", price: "$25", category: "Practice" },
-  { name: "Stainless Steel Tumbler", price: "$30", category: "Wellness" },
-  { name: "Crossbody Bag", price: "$30", category: "On-The-Go" },
+  { name: "Resilience T-Shirt", price: "$28", category: "Apparel", image: "/images/products/shirt-allover-print-white.png" },
+  { name: "Healing Mug", price: "$18", category: "Everyday", image: "/images/products/mug-white-black-handle.png" },
+  { name: "Mindful Water Bottle", price: "$30", category: "Wellness", image: "/images/products/water-bottle-light-blue.png" },
+  { name: "Spiral Journal", price: "$25", category: "Practice", image: "/images/products/notebook-spiral-white.png" },
+  { name: "Stainless Steel Tumbler", price: "$30", category: "Wellness", image: "/images/products/tumbler-tall-straw-white.png" },
+  { name: "Crossbody Bag", price: "$30", category: "On-The-Go", image: "/images/products/bag-crossbody-black.png" },
 ];
 
 export default function ShopPreview() {
@@ -37,37 +38,15 @@ export default function ShopPreview() {
               className="snap-start shrink-0 w-[260px] md:w-auto"
             >
               <div className="card-hover bg-white rounded-2xl overflow-hidden border border-transparent hover:border-gold/20 h-full">
-                {/* Product image placeholder */}
-                <div className="aspect-square bg-gradient-to-br from-navy/5 to-navy/10 flex items-center justify-center">
-                  <div className="text-center">
-                    <svg
-                      viewBox="0 0 64 64"
-                      className="w-12 h-12 mx-auto opacity-20"
-                      fill="none"
-                    >
-                      <rect
-                        x="12"
-                        y="8"
-                        width="40"
-                        height="48"
-                        rx="4"
-                        stroke="#2C4A7C"
-                        strokeWidth="2"
-                      />
-                      <circle cx="32" cy="28" r="8" stroke="#C8A84E" strokeWidth="1.5" />
-                      <path
-                        d="M12 44 L24 36 L32 42 L44 32 L52 38 L52 52 Q52 56 48 56 L16 56 Q12 56 12 52 Z"
-                        fill="#2C4A7C"
-                        opacity="0.1"
-                      />
-                    </svg>
-                    <p
-                      className="text-navy/30 text-xs mt-2"
-                      style={{ fontFamily: "var(--font-ui)" }}
-                    >
-                      {product.category}
-                    </p>
-                  </div>
+                {/* Product image */}
+                <div className="aspect-square relative overflow-hidden bg-cream">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover object-center"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="p-5">
                   <h3

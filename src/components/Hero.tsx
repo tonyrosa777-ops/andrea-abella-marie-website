@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useMemo } from "react";
+import Image from "next/image";
 import Logo from "./Logo";
 
 function Stars() {
@@ -84,55 +85,80 @@ export default function Hero() {
       <GoldParticles />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <Logo className="w-56 h-52 mx-auto" />
-        </motion.div>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-24">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-        >
-          Helping You Come Home
-          <br />
-          <span className="text-gold italic">to Yourself</span>
-        </motion.h1>
+          {/* Left: Text */}
+          <div className="text-center md:text-left order-2 md:order-1">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="mb-8"
+            >
+              <Logo className="w-44 h-40 mx-auto md:mx-0" />
+            </motion.div>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Trauma-Informed Coaching for Veterans &amp; Overwhelmed Professionals
-        </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+            >
+              Helping You Come Home
+              <br />
+              <span className="text-gold italic">to Yourself</span>
+            </motion.h1>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <a href="/book" className="btn-gold">
-            Begin Your Journey
-          </a>
-          <a href="#pillars" className="btn-ghost">
-            Learn How I Help
-          </a>
-        </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg md:text-xl text-white/70 mb-10 max-w-xl mx-auto md:mx-0"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Trauma-Informed Coaching for Veterans &amp; Overwhelmed Professionals
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center md:items-start"
+            >
+              <a href="/book" className="btn-gold">
+                Begin Your Journey
+              </a>
+              <a href="#pillars" className="btn-ghost">
+                Learn How I Help
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right: Headshot */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="order-1 md:order-2 flex justify-center"
+          >
+            <div className="relative max-w-xs w-full">
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
+                <Image
+                  src="/images/headshots/andrea-headshot-blazer-outdoor.png"
+                  alt="Andrea Abella Marie — Trauma-Informed Mindset Coach"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
+              <div className="absolute -top-3 -right-3 w-20 h-20 border-t-2 border-r-2 border-gold/50 rounded-tr-2xl pointer-events-none" />
+              <div className="absolute -bottom-3 -left-3 w-20 h-20 border-b-2 border-l-2 border-gold/50 rounded-bl-2xl pointer-events-none" />
+            </div>
+          </motion.div>
+
+        </div>
       </div>
 
       {/* Scroll indicator */}

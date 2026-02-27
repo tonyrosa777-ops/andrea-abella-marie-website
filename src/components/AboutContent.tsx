@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
-import Logo from "./Logo";
 
 const credentials = [
   {
@@ -113,16 +113,14 @@ export default function AboutContent() {
             {/* Photo placeholder */}
             <div className="md:col-span-2">
               <AnimatedSection>
-                <div className="aspect-[3/4] rounded-2xl bg-navy/10 border-2 border-gold/20 flex items-center justify-center overflow-hidden">
-                  <div className="text-center p-8">
-                    <Logo className="w-24 h-24 mx-auto mb-4 opacity-30" />
-                    <p
-                      className="text-sm text-navy/40"
-                      style={{ fontFamily: "var(--font-ui)" }}
-                    >
-                      Photo Coming Soon
-                    </p>
-                  </div>
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
+                  <Image
+                    src="/images/headshots/andrea-headshot-gray-tshirt-studio.png"
+                    alt="Andrea Abella Marie"
+                    fill
+                    className="object-cover object-center"
+                    loading="lazy"
+                  />
                 </div>
               </AnimatedSection>
             </div>

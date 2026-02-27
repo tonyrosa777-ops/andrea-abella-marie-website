@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
 export default function AboutPreview() {
@@ -10,28 +11,14 @@ export default function AboutPreview() {
           {/* Photo placeholder */}
           <AnimatedSection>
             <div className="relative">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-navy/10 border-2 border-gold/20">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy/5 to-navy/15">
-                  <div className="text-center p-8">
-                    <svg
-                      viewBox="0 0 80 80"
-                      className="w-20 h-20 mx-auto mb-4 opacity-30"
-                      fill="none"
-                    >
-                      <circle cx="40" cy="28" r="14" fill="#2C4A7C" />
-                      <path
-                        d="M12 72 Q12 48 40 48 Q68 48 68 72"
-                        fill="#2C4A7C"
-                      />
-                    </svg>
-                    <p
-                      className="text-navy/40 text-sm"
-                      style={{ fontFamily: "var(--font-ui)" }}
-                    >
-                      Andrea&apos;s Photo
-                    </p>
-                  </div>
-                </div>
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden relative">
+                <Image
+                  src="/images/headshots/andrea-headshot-navy-blouse-fall.png"
+                  alt="Andrea Abella Marie"
+                  fill
+                  className="object-cover object-center"
+                  loading="lazy"
+                />
               </div>
               {/* Decorative gold corner */}
               <div className="absolute -top-3 -right-3 w-24 h-24 border-t-2 border-r-2 border-gold/40 rounded-tr-2xl" />
