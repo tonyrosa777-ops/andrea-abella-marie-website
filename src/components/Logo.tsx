@@ -17,7 +17,7 @@ export default function Logo({
     <div className="flex flex-col items-center">
       <div className={`relative ${className}`}>
         <Image
-          src="/Logo_light_final.png"
+          src="/images/logos/logo-light-white-figure.png"
           alt="Andrea Abella Marie Logo"
           fill
           className="object-contain"
