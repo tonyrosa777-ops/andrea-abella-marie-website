@@ -93,10 +93,10 @@ export default function ContactContent() {
                         Phone
                       </p>
                       <a
-                        href="tel:512-399-6916"
+                        href="tel:978-790-2181"
                         className="text-charcoal/70 hover:text-gold transition-colors"
                       >
-                        512-399-6916
+                        978-790-2181
                       </a>
                     </div>
                   </div>
@@ -125,10 +125,10 @@ export default function ContactContent() {
                         Email
                       </p>
                       <a
-                        href="mailto:aandreaabellamarie@gmail.com"
+                        href="mailto:andrea8466@icloud.com"
                         className="text-charcoal/70 hover:text-gold transition-colors text-sm"
                       >
-                        aandreaabellamarie@gmail.com
+                        andrea8466@icloud.com
                       </a>
                     </div>
                   </div>

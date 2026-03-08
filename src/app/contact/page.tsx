@@ -6,7 +6,7 @@ import ContactContent from "@/components/ContactContent";
 export const metadata: Metadata = {
   title: "Contact | Andrea Abella Marie — Get in Touch",
   description:
-    "Reach out to Andrea Abella Marie for coaching inquiries, speaking requests, or general questions. Phone: 512-399-6916.",
+    "Reach out to Andrea Abella Marie for coaching inquiries, speaking requests, or general questions. Phone: 978-790-2181.",
 };
 
 export default function ContactPage() {

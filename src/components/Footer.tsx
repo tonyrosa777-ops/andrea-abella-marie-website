@@ -128,16 +128,16 @@ export default function Footer() {
             style={{ fontFamily: "var(--font-ui)" }}
           >
             <a
-              href="tel:512-399-6916"
+              href="tel:978-790-2181"
               className="hover:text-gold transition-colors"
             >
-              512-399-6916
+              978-790-2181
             </a>
             <a
-              href="mailto:aandreaabellamarie@gmail.com"
+              href="mailto:andrea8466@icloud.com"
               className="hover:text-gold transition-colors"
             >
-              aandreaabellamarie@gmail.com
+              andrea8466@icloud.com
             </a>
           </div>
         </div>
