@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# leftover/duplicate logo files
+/public/logo.png
+/public/logo_light.png
+/public/Logo_light_final.png
+/public/logo_light_fixed.png
+/public/file.svg
+/public/globe.svg
+/public/next.svg
+/public/vercel.svg
+/public/window.svg
+/public/images/favicon_io.zip
+/public/images/manifest.json
+/public/images/logos/logo-dark-navy-figure.png
