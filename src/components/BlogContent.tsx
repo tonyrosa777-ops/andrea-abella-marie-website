@@ -47,16 +47,6 @@ const posts: Post[] = [
     featured: true,
   },
   {
-    id: "grounding-techniques",
-    title: "5 Grounding Techniques You Can Use Anywhere",
-    excerpt:
-      "When anxiety hits, your body needs an anchor. These five nervous system regulation tools work in under two minutes — no special equipment needed.",
-    category: "Nervous System",
-    date: "Jan 27, 2026",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
     id: "emotional-resilience-myth",
     title: "Emotional Resilience Isn't About Being Strong All the Time",
     excerpt:
