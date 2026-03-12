@@ -248,7 +248,7 @@ export default function ShopContent() {
         <div className="max-w-2xl mx-auto px-6">
           <p
             className="text-white/60 italic"
-            style={{ fontFamily: "var(--font-script)", fontSize: "1.2rem" }}
+            style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem" }}
           >
             &ldquo;Prices reflect small-batch, intentional pieces — not
             mass-produced merch.&rdquo;

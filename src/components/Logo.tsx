@@ -40,7 +40,7 @@ export default function Logo({
           <p
             className="text-xs tracking-wider italic"
             style={{
-              fontFamily: "var(--font-script)",
+              fontFamily: "var(--font-display)",
               color: textColor,
               opacity: 0.8,
             }}

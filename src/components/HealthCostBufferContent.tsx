@@ -39,7 +39,7 @@ export default function HealthCostBufferContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="text-lg text-white/70 max-w-2xl mx-auto italic"
-            style={{ fontFamily: "var(--font-script)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             &ldquo;{healthCostBuffer.quote}&rdquo;
           </motion.p>

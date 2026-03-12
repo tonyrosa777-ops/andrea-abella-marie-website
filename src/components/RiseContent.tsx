@@ -75,7 +75,7 @@ export default function RiseContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
             className="text-xl text-gold/90 italic max-w-2xl mx-auto"
-            style={{ fontFamily: "var(--font-script)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             &ldquo;{riseApprenticeship.quote}&rdquo;
           </motion.p>

@@ -44,7 +44,7 @@ export default function AboutPreview() {
             <AnimatedSection delay={0.3}>
               <p
                 className="text-xl text-gold mb-6 italic"
-                style={{ fontFamily: "var(--font-script)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 &ldquo;Now I help you find your way forward.&rdquo;
               </p>

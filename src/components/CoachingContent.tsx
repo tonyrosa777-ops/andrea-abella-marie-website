@@ -127,7 +127,7 @@ export default function CoachingContent() {
 
                   <p
                     className="text-xs text-charcoal/50 italic mb-6"
-                    style={{ fontFamily: "var(--font-script)" }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {tier.ideal}
                   </p>
@@ -187,7 +187,7 @@ export default function CoachingContent() {
               </ul>
               <p
                 className="text-xs text-charcoal/50 italic"
-                style={{ fontFamily: "var(--font-script)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 {singleSession.ideal}
               </p>

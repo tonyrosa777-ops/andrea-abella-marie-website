@@ -129,7 +129,7 @@ function renderBlock(block: ContentBlock, index: number) {
         >
           <p
             className="text-navy/80 italic leading-relaxed"
-            style={{ fontFamily: "var(--font-script)", fontSize: "1.25rem" }}
+            style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem" }}
           >
             {block.text}
           </p>

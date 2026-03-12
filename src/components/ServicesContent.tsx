@@ -98,7 +98,7 @@ export default function ServicesContent() {
               </p>
               <p
                 className="text-gold/80 italic mb-8 text-lg"
-                style={{ fontFamily: "var(--font-script)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 &ldquo;You don&apos;t need to become someone new. You need to
                 feel safe being who you are — again.&rdquo;
@@ -208,7 +208,7 @@ export default function ServicesContent() {
 
                   <p
                     className="text-xs text-charcoal/50 italic mb-6"
-                    style={{ fontFamily: "var(--font-script)" }}
+                    style={{ fontFamily: "var(--font-display)" }}
                   >
                     {tier.ideal}
                   </p>
@@ -270,7 +270,7 @@ export default function ServicesContent() {
               </ul>
               <p
                 className="text-xs text-charcoal/50 italic"
-                style={{ fontFamily: "var(--font-script)" }}
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 {singleSession.ideal}
               </p>

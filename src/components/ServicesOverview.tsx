@@ -146,7 +146,7 @@ export default function ServicesOverview() {
                   className={`text-xs mb-6 italic ${
                     tier.popular ? "text-gold-light/80" : "text-gold"
                   }`}
-                  style={{ fontFamily: "var(--font-script)", fontSize: "0.9rem" }}
+                  style={{ fontFamily: "var(--font-display)", fontSize: "0.9rem" }}
                 >
                   {tier.ideal}
                 </p>

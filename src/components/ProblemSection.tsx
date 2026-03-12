@@ -26,19 +26,19 @@ export default function ProblemSection() {
           <div className="space-y-5 text-lg text-charcoal/80 max-w-2xl mx-auto leading-relaxed">
             <p
               className="italic text-navy-light"
-              style={{ fontFamily: "var(--font-script)", fontSize: "1.4rem" }}
+              style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem" }}
             >
               If positivity feels fake...
             </p>
             <p
               className="italic text-navy-light"
-              style={{ fontFamily: "var(--font-script)", fontSize: "1.4rem" }}
+              style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem" }}
             >
               If &ldquo;just push through&rdquo; no longer works...
             </p>
             <p
               className="italic text-navy-light"
-              style={{ fontFamily: "var(--font-script)", fontSize: "1.4rem" }}
+              style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem" }}
             >
               If you look capable on the outside but feel disconnected
               inside...
