@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import { BlogPost, ContentBlock, getRelatedPosts } from "@/lib/blog";
 
@@ -266,8 +267,19 @@ export default function BlogPostContent({ post }: { post: BlogPost }) {
                     href={`/blog/${relPost.id}`}
                     className="group block bg-white rounded-2xl overflow-hidden border border-transparent hover:border-gold/20 transition-all card-hover h-full"
                   >
-                    <div className="aspect-[16/9] bg-gradient-to-br from-navy/5 to-navy/15 flex items-center justify-center">
-                      <CategoryIcon category={relPost.category} />
+                    <div className="aspect-[16/9] relative overflow-hidden bg-gradient-to-br from-navy/5 to-navy/15">
+                      {relPost.image ? (
+                        <Image
+                          src={relPost.image}
+                          alt={relPost.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full">
+                          <CategoryIcon category={relPost.category} />
+                        </div>
+                      )}
                     </div>
                     <div className="p-5">
                       <span

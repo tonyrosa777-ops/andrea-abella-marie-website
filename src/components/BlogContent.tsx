@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import { posts } from "@/lib/blog";
 
-// -- Blog data (placeholder posts from the master plan content pillars) --
 const categories = [
   "All",
   "Nervous System",
@@ -13,99 +14,6 @@ const categories = [
   "Emotional Resilience",
   "Energy Healing",
   "Mindset",
-];
-
-interface Post {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  featured: boolean;
-}
-
-const posts: Post[] = [
-  {
-    id: "why-toxic-positivity-fails",
-    title: "Why \"Just Stay Positive\" Doesn't Work for Trauma Survivors",
-    excerpt:
-      "Toxic positivity dismisses real pain. Here's why nervous system regulation — not forced optimism — is the real path to emotional freedom.",
-    category: "Nervous System",
-    date: "Feb 10, 2026",
-    readTime: "6 min read",
-    featured: true,
-  },
-  {
-    id: "identity-after-service",
-    title: "Who Am I Now? Rebuilding Identity After Military Service",
-    excerpt:
-      "Leaving the military doesn't just change your job — it changes your entire sense of self. Here's how to begin the process of coming home to who you really are.",
-    category: "Veteran Life",
-    date: "Feb 3, 2026",
-    readTime: "8 min read",
-    featured: true,
-  },
-  {
-    id: "emotional-resilience-myth",
-    title: "Emotional Resilience Isn't About Being Strong All the Time",
-    excerpt:
-      "Real resilience means knowing when to rest, when to ask for help, and when to let yourself feel. Here's how to redefine strength on your own terms.",
-    category: "Emotional Resilience",
-    date: "Jan 20, 2026",
-    readTime: "5 min read",
-    featured: false,
-  },
-  {
-    id: "energy-healing-explained",
-    title: "What Is Energy Healing & How Can It Support Trauma Recovery?",
-    excerpt:
-      "Energy healing isn't woo-woo. It's a complementary practice that helps the body release stored trauma and return to a state of calm. Here's how it works.",
-    category: "Energy Healing",
-    date: "Jan 13, 2026",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    id: "rebuilding-self-trust",
-    title: "How to Rebuild Self-Trust After It's Been Broken",
-    excerpt:
-      "When life breaks your trust — in others or yourself — the path back starts with tiny, consistent promises you keep. Here's a framework that actually works.",
-    category: "Identity Rebuilding",
-    date: "Jan 6, 2026",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    id: "mindset-shifts-trauma",
-    title: "3 Mindset Shifts That Changed Everything in My Healing Journey",
-    excerpt:
-      "These aren't affirmations you tape to your mirror. They're deep, internal shifts that rewired how I relate to myself, my past, and my future.",
-    category: "Mindset",
-    date: "Dec 30, 2025",
-    readTime: "5 min read",
-    featured: false,
-  },
-  {
-    id: "veterans-civilian-life",
-    title: "The Hardest Part of Civilian Life Nobody Talks About",
-    excerpt:
-      "It's not the job search or the paperwork. It's the silence. The loss of mission. The identity vacuum. And there's a way through it.",
-    category: "Veteran Life",
-    date: "Dec 23, 2025",
-    readTime: "7 min read",
-    featured: false,
-  },
-  {
-    id: "nervous-system-dysregulation",
-    title: "Signs Your Nervous System Is Dysregulated (And What to Do About It)",
-    excerpt:
-      "Always on edge? Numb? Swinging between the two? Your nervous system might be stuck in survival mode. Here's how to recognize it — and start resetting.",
-    category: "Nervous System",
-    date: "Dec 16, 2025",
-    readTime: "6 min read",
-    featured: false,
-  },
 ];
 
 function CategoryIcon({ category }: { category: string }) {
@@ -211,18 +119,22 @@ export default function BlogContent() {
                     href={`/blog/${post.id}`}
                     className="group block card-hover bg-white rounded-2xl overflow-hidden border border-transparent hover:border-gold/20 h-full"
                   >
-                    {/* Image placeholder */}
-                    <div className="aspect-[16/9] bg-gradient-to-br from-navy/10 to-navy/20 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-navy/5 group-hover:bg-navy/10 transition-colors" />
-                      <div className="relative text-center p-6">
-                        <CategoryIcon category={post.category} />
-                        <p
-                          className="text-navy/30 text-xs mt-2"
-                          style={{ fontFamily: "var(--font-ui)" }}
-                        >
-                          Featured
-                        </p>
-                      </div>
+                    {/* Featured card image */}
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-navy/10 to-navy/20 flex items-center justify-center">
+                          <CategoryIcon category={post.category} />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-navy/20 group-hover:bg-navy/10 transition-colors" />
                       {/* Featured badge */}
                       <div
                         className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest bg-gold text-navy"
@@ -376,11 +288,22 @@ export default function BlogContent() {
                     href={`/blog/${post.id}`}
                     className="group block card-hover bg-white rounded-2xl overflow-hidden border border-transparent hover:border-gold/20 h-full"
                   >
-                    {/* Image placeholder */}
-                    <div className="aspect-[16/10] bg-gradient-to-br from-navy/5 to-navy/15 flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <CategoryIcon category={post.category} />
-                      </div>
+                    {/* Card image */}
+                    <div className="aspect-[16/10] relative overflow-hidden">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-navy/15 flex items-center justify-center">
+                          <CategoryIcon category={post.category} />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" />
                     </div>
                     <div className="p-5">
                       <div className="flex items-center gap-3 mb-3">

@@ -14,6 +14,7 @@ export interface BlogPost {
   date: string;
   readTime: string;
   featured: boolean;
+  image?: string;
   body: ContentBlock[];
 }
 
@@ -27,6 +28,7 @@ export const posts: BlogPost[] = [
     date: "Feb 10, 2026",
     readTime: "6 min read",
     featured: true,
+    image: "/images/blog/why-toxic-positivity-fails.png",
     body: [
       {
         type: "paragraph",
@@ -92,6 +94,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "identity-after-service",
+    image: "/images/blog/identity-after-service.png",
     title: "Who Am I Now? Rebuilding Identity After Military Service",
     excerpt:
       "I was the only woman in my unit for eight years. When I got out, I had no idea who I was without the uniform. Here's what I wish someone had told me about what comes next.",
@@ -185,6 +188,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "emotional-resilience-myth",
+    image: "/images/blog/emotional-resilience-myth.png",
     title: "Emotional Resilience Isn't About Being Strong All the Time",
     excerpt:
       "I performed strength for years. Three hospitalizations later, I learned that real resilience is not about holding it together — it's about knowing what to do when you don't.",
@@ -267,6 +271,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "energy-healing-explained",
+    image: "/images/blog/energy-healing-explained.png",
     title: "What Is Energy Healing & How Can It Support Trauma Recovery?",
     excerpt:
       "Sacred geometry healing isn't what most people expect. Here's what it actually is, why I trained in it, and how it reaches the parts of trauma that talk therapy can't always touch.",
@@ -361,6 +366,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "rebuilding-self-trust",
+    image: "/images/blog/rebuilding-self-trust.png",
     title: "How to Rebuild Self-Trust After It's Been Broken",
     excerpt:
       "After years of PTSD, three hospitalizations, and a VA system that kept telling me my experience wasn't real enough — rebuilding self-trust wasn't optional. Here's what actually worked.",
@@ -451,6 +457,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "mindset-shifts-trauma",
+    image: "/images/blog/mindset-shifts-trauma.png",
     title: "3 Mindset Shifts That Changed Everything in My Healing Journey",
     excerpt:
       "These didn't come from a book or a seminar. They came from 8 years of service, 7 years fighting the VA, and finally learning to think about my thinking.",
@@ -531,6 +538,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "veterans-civilian-life",
+    image: "/images/blog/veterans-civilian-life.png",
     title: "The Hardest Part of Civilian Life Nobody Talks About",
     excerpt:
       "It's not the résumé or the benefits paperwork. I know — I was the only woman in my unit for 8 years. What nobody told me was what the silence would feel like.",
@@ -617,6 +625,7 @@ export const posts: BlogPost[] = [
   },
   {
     id: "nervous-system-dysregulation",
+    image: "/images/blog/nervous-system-dysregulation.png",
     title: "Signs Your Nervous System Is Dysregulated (And What to Do About It)",
     excerpt:
       "Always on edge? Numb? Swinging between the two? I lived in survival mode for years before I understood what was actually happening. Here's what I know now.",
