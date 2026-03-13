@@ -7,6 +7,7 @@ import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import { useCart } from "@/lib/cart";
 import { bundles } from "@/lib/products";
+import seededProducts from "@/lib/printful-seeded-products.json";
 
 const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Headwear", "Home & Stationery", "Accessories", "Bundles"];
 
@@ -74,9 +75,16 @@ export default function ShopContent() {
   const { addItem } = useCart();
 
   useEffect(() => {
+    // Build a lookup from printful_id → design slug using seeded data
+    const designMap: Record<number, string> = {};
+    seededProducts.products.forEach((p) => {
+      if (p.design) designMap[p.printful_id] = p.design;
+    });
+
     fetch("/api/printful/products")
       .then((r) => r.json())
       .then((data: PrintfulProduct[]) => {
+        if (!Array.isArray(data) || data.length === 0) throw new Error("empty");
         const normalized: NormalizedProduct[] = data.map((p) => {
           const raw = p.sync_product ?? p;
           const name = raw.name ?? p.name ?? "Product";
@@ -92,46 +100,39 @@ export default function ShopContent() {
           else if (/pillow|blanket|poster|notebook|canvas|journal/.test(lower)) category = "Home & Stationery";
           else if (/phone|keychain|bookmark/.test(lower)) category = "Accessories";
 
-          return {
-            id: p.id,
-            slug,
-            name,
-            price: 0, // price shown from seeded JSON fallback below
-            category,
-            image: raw.thumbnail_url ?? undefined,
-          };
+          // Use Printful thumbnail if available, else fall back to our branded design PNG
+          const pfThumb = raw.thumbnail_url || p.thumbnail_url;
+          const designFile = designMap[p.id];
+          const image = (pfThumb && pfThumb.length > 10)
+            ? pfThumb
+            : designFile
+              ? `/images/designs/${designFile}.png`
+              : undefined;
+
+          return { id: p.id, slug, name, price: 0, category, image };
         });
         setProducts(normalized);
       })
       .catch(() => {
         // Fallback: load from seeded JSON directly
-        import("@/lib/printful-seeded-products.json").then((m) => {
-          const seeded = m.default as { products: Array<{ slug: string; name: string; price: number; category: string; preview_image_url: string; printful_id: number }> };
-          setProducts(
-            seeded.products.map((p) => ({
-              id: p.printful_id,
-              slug: p.slug,
-              name: p.name,
-              price: p.price,
-              category: p.category,
-              image: p.preview_image_url || undefined,
-            }))
-          );
-        });
+        const seeded = seededProducts as { products: Array<{ slug: string; name: string; price: number; category: string; preview_image_url: string; printful_id: number; design?: string }> };
+        setProducts(
+          seeded.products.map((p) => ({
+            id: p.printful_id,
+            slug: p.slug,
+            name: p.name,
+            price: p.price,
+            category: p.category,
+            image: p.design ? `/images/designs/${p.design}.png` : undefined,
+          }))
+        );
       })
       .finally(() => setLoading(false));
   }, []);
 
-  // Merge price from seeded JSON since live API doesn't return retail price
-  const [seededPrices, setSeededPrices] = useState<Record<number, number>>({});
-  useEffect(() => {
-    import("@/lib/printful-seeded-products.json").then((m) => {
-      const seeded = m.default as { products: Array<{ printful_id: number; price: number }> };
-      const map: Record<number, number> = {};
-      seeded.products.forEach((p) => { map[p.printful_id] = p.price; });
-      setSeededPrices(map);
-    });
-  }, []);
+  // Price map from seeded JSON (live Printful API doesn't return retail prices in list endpoint)
+  const seededPrices: Record<number, number> = {};
+  seededProducts.products.forEach((p) => { seededPrices[p.printful_id] = p.price; });
 
   const filteredProducts =
     activeCategory === "All" || activeCategory === "Bundles"
