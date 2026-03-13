@@ -100,13 +100,13 @@ async function getVariants(blueprintId) {
 // ─── Blueprint catalog (IDs from /v2/catalog-products inspection) ──────────
 // Format: { blueprintId, name, design, category, darkBg, maxVariants }
 const PRODUCTS = [
-  // APPAREL
-  { blueprintId: 71,  name: "Resilience Tee",              design: "light-tagline",  category: "Apparel",           maxVariants: 15 },
-  { blueprintId: 71,  name: "Becoming Tee",                design: "light-quote-3",  category: "Apparel",           maxVariants: 15 },
-  { blueprintId: 146, name: "Resilience Hoodie",           design: "dark-tagline",   category: "Apparel",           maxVariants: 15 },
-  { blueprintId: 146, name: "Grounded Hoodie",             design: "dark-quote-5",   category: "Apparel",           maxVariants: 15 },
-  { blueprintId: 145, name: "Healing Sweatshirt",          design: "dark-tagline",   category: "Apparel",           maxVariants: 15 },
-  { blueprintId: 356, name: "Still Standing Long Sleeve",  design: "light-tagline",  category: "Apparel",           maxVariants: 15 },
+  // APPAREL — transparent bg so shirt fabric color shows through (not a colored rectangle on chest)
+  { blueprintId: 71,  name: "Resilience Tee",             design: "apparel-dark",  category: "Apparel", maxVariants: 15 },
+  { blueprintId: 71,  name: "Becoming Tee",               design: "apparel-dark",  category: "Apparel", maxVariants: 15 },
+  { blueprintId: 146, name: "Resilience Hoodie",          design: "apparel-light", category: "Apparel", maxVariants: 15 },
+  { blueprintId: 146, name: "Grounded Hoodie",            design: "apparel-light", category: "Apparel", maxVariants: 15 },
+  { blueprintId: 145, name: "Healing Sweatshirt",         design: "apparel-light", category: "Apparel", maxVariants: 15 },
+  { blueprintId: 356, name: "Still Standing Long Sleeve", design: "apparel-dark",  category: "Apparel", maxVariants: 15 },
   // DRINKWARE
   { blueprintId: 19,  name: "Healing Mug 11oz",            design: "light-tagline",  category: "Drinkware",         maxVariants: 5  },
   { blueprintId: 19,  name: "Peace Mug 11oz",              design: "light-quote-1",  category: "Drinkware",         maxVariants: 5  },
@@ -117,10 +117,9 @@ const PRODUCTS = [
   // BAGS
   { blueprintId: 367, name: "Carry Your Calm Tote",        design: "light-tagline",  category: "Bags",              maxVariants: 5  },
   { blueprintId: 262, name: "Still Standing Drawstring Bag",design:"dark-tagline",   category: "Bags",              maxVariants: 5  },
-  // HEADWEAR — embroidered items require thread_colors option
-  { blueprintId: 252, name: "Resilience Trucker Hat",      design: "light-tagline",  category: "Headwear",          maxVariants: 5, threadColors: ["#005397", "#A67843", "#FFFFFF"] },
-  { blueprintId: 81,  name: "Healing Beanie",              design: "dark-tagline",   category: "Headwear",          maxVariants: 5, threadColors: ["#FFFFFF", "#A67843"] },
-  { blueprintId: 379, name: "Grounded Bucket Hat",         design: "light-tagline",  category: "Headwear",          maxVariants: 5, threadColors: ["#005397", "#A67843", "#FFFFFF"] },
+  // HEADWEAR — logo-only design (transparent bg) on front panel
+  { blueprintId: 81,  name: "Healing Beanie",   design: "logo-only-light", category: "Headwear", maxVariants: 5 },
+  { blueprintId: 379, name: "Grounded Dad Hat", design: "logo-only-dark",  category: "Headwear", maxVariants: 5 },
   // HOME & STATIONERY
   { blueprintId: 395, name: "Resilience Throw Blanket",    design: "dark-tagline",   category: "Home & Stationery", maxVariants: 5  },
   { blueprintId: 474, name: "Healing Journey Journal",     design: "light-tagline",  category: "Home & Stationery", maxVariants: 5  },

@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { readFileSync, mkdirSync } from "fs";
+import { mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -10,9 +10,10 @@ const OUT = join(ROOT, "public", "images", "designs");
 
 mkdirSync(OUT, { recursive: true });
 
-const W = 2400;
-const H = 2400;
-const LOGO_W = 900;
+// 4000×4000px → ~167 DPI on largest print templates (Printful requires 150 DPI min)
+const W = 4000;
+const H = 4000;
+const LOGO_W = 1500;
 
 function wrapText(text, maxChars) {
   const words = text.split(" ");
@@ -32,17 +33,16 @@ function wrapText(text, maxChars) {
 }
 
 function buildSvgOverlay({ quote, textColor, isTagline, width, height, textStartY }) {
-  const fontSize = isTagline ? 80 : 90;
-  const lineHeight = isTagline ? 100 : 115;
+  const fontSize = isTagline ? 133 : 150;
+  const lineHeight = isTagline ? 167 : 192;
   const lines = wrapText(quote, 38);
-  const startY = textStartY;
 
   const textEls = lines
     .map(
       (line, i) => `
     <text
       x="${width / 2}"
-      y="${startY + i * lineHeight}"
+      y="${textStartY + i * lineHeight}"
       font-family="Georgia, 'Times New Roman', serif"
       font-size="${fontSize}"
       font-style="italic"
@@ -65,50 +65,58 @@ async function createDesign({
   textColor,
   outputName,
   isTagline = false,
+  transparent = false,
 }) {
   const logoPath = join(LOGOS, logoFile);
   const outputPath = join(OUT, outputName);
 
   console.log(`  Generating ${outputName}...`);
 
-  // Trim transparent pixels first, then resize to 900px wide
-  // This ensures text is positioned against the actual visual content, not transparent padding
+  // Trim transparent pixels first so text positions against actual visual content
   const logoResized = await sharp(logoPath)
     .trim()
     .resize(LOGO_W, null, { fit: "inside" })
     .toBuffer();
 
-  // Get actual (trimmed) logo dimensions
   const logoMeta = await sharp(logoResized).metadata();
-  const logoH = logoMeta.height ?? 400;
+  const logoH = logoMeta.height ?? 667;
   const logoLeft = Math.round((W - LOGO_W) / 2);
   const logoTop = Math.round(H * 0.08);
 
-  // Place text snugly under the logo — 85px gap below logo bottom
-  const textStartY = logoTop + logoH + 85;
+  // 142px gap (proportional to 85px at 2400px canvas)
+  const textStartY = logoTop + logoH + 142;
   const svgOverlay = buildSvgOverlay({ quote, textColor, isTagline, width: W, height: H, textStartY });
 
-  // Parse bgColor — handle both hex and rgba
-  let background;
-  if (bgColor.startsWith("#")) {
-    const hex = bgColor.replace("#", "");
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    background = { r, g, b, alpha: 1 };
+  if (transparent) {
+    // Logo-only: transparent background — for hat/beanie front panels
+    await sharp({
+      create: { width: W, height: H, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } },
+    })
+      .composite([
+        { input: logoResized, left: logoLeft, top: logoTop },
+        { input: svgOverlay, left: 0, top: 0 },
+      ])
+      .png({ compressionLevel: 8 })
+      .toFile(outputPath);
   } else {
-    background = bgColor;
+    // Full-bleed: colored background fills entire print area
+    const hex = bgColor.replace("#", "");
+    const background = {
+      r: parseInt(hex.substring(0, 2), 16),
+      g: parseInt(hex.substring(2, 4), 16),
+      b: parseInt(hex.substring(4, 6), 16),
+      alpha: 1,
+    };
+    await sharp({
+      create: { width: W, height: H, channels: 4, background },
+    })
+      .composite([
+        { input: logoResized, left: logoLeft, top: logoTop },
+        { input: svgOverlay, left: 0, top: 0 },
+      ])
+      .png({ compressionLevel: 8 })
+      .toFile(outputPath);
   }
-
-  await sharp({
-    create: { width: W, height: H, channels: 4, background },
-  })
-    .composite([
-      { input: logoResized, left: logoLeft, top: logoTop },
-      { input: svgOverlay, left: 0, top: 0 },
-    ])
-    .png({ compressionLevel: 8 })
-    .toFile(outputPath);
 
   console.log(`  ✓ ${outputName}`);
 }
@@ -119,108 +127,32 @@ const GOLD = "#C8A84E";
 const NAVY = "#1B2A4A";
 
 const designs = [
-  // --- DARK DESIGNS ---
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-tagline.png",
-    quote: "Resilience. Healing. One Day At a Time.",
-    isTagline: true,
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-1.png",
-    quote: "You survived. Now you rebuild.",
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-2.png",
-    quote: "Healing isn't linear. Neither are you.",
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-3.png",
-    quote: "Still standing. Still healing.",
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-4.png",
-    quote: "The bravest thing you did was stay.",
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-5.png",
-    quote: "Grounded. Whole. Becoming.",
-  },
-  {
-    bgColor: DARK_BG,
-    logoFile: "logo-light-white-figure.png",
-    textColor: GOLD,
-    outputName: "dark-quote-6.png",
-    quote: "Soft enough to feel. Strong enough to heal.",
-  },
-  // --- LIGHT DESIGNS ---
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-tagline.png",
-    quote: "Resilience. Healing. One Day At a Time.",
-    isTagline: true,
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-1.png",
-    quote: "Peace is your birthright.",
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-2.png",
-    quote: "One breath at a time.",
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-3.png",
-    quote: "Carry your calm.",
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-4.png",
-    quote: "Your story isn't over.",
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-5.png",
-    quote: "Trauma ends. Healing begins.",
-  },
-  {
-    bgColor: LIGHT_BG,
-    logoFile: "logo-dark-blue-figure.png",
-    textColor: NAVY,
-    outputName: "light-quote-6.png",
-    quote: "Your nervous system remembers. So does your strength.",
-  },
+  // --- DARK DESIGNS (navy bg + light logo + gold text) ---
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-tagline.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-1.png",  quote: "You survived. Now you rebuild." },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-2.png",  quote: "Healing isn't linear. Neither are you." },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-3.png",  quote: "Still standing. Still healing." },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-4.png",  quote: "The bravest thing you did was stay." },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-5.png",  quote: "Grounded. Whole. Becoming." },
+  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-6.png",  quote: "Soft enough to feel. Strong enough to heal." },
+
+  // --- LIGHT DESIGNS (white bg + dark logo + navy text) ---
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-tagline.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-1.png", quote: "Peace is your birthright." },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-2.png", quote: "One breath at a time." },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-3.png", quote: "Carry your calm." },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-4.png", quote: "Your story isn't over." },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-5.png", quote: "Trauma ends. Healing begins." },
+  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-6.png", quote: "Your nervous system remembers. So does your strength." },
+
+  // --- LOGO-ONLY DESIGNS (transparent bg — for hat/beanie front panels) ---
+  { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "logo-only-dark.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
+  { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "logo-only-light.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
+
+  // --- APPAREL DESIGNS (transparent bg — for T-shirts, hoodies, sweatshirts, long sleeves) ---
+  // Transparent so the shirt's own fabric color shows through — no ugly colored rectangle on chest
+  { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "apparel-dark.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
+  { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "apparel-light.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
 ];
 
 console.log(`\nGenerating ${designs.length} design files...\n`);
