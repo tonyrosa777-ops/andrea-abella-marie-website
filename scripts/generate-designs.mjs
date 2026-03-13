@@ -31,11 +31,11 @@ function wrapText(text, maxChars) {
   return lines;
 }
 
-function buildSvgOverlay({ quote, textColor, isTagline, width, height }) {
+function buildSvgOverlay({ quote, textColor, isTagline, width, height, textStartY }) {
   const fontSize = isTagline ? 80 : 90;
   const lineHeight = isTagline ? 100 : 115;
   const lines = wrapText(quote, 38);
-  const startY = height * 0.58;
+  const startY = textStartY;
 
   const textEls = lines
     .map(
@@ -96,7 +96,9 @@ async function createDesign({
   const logoLeft = Math.round((W - LOGO_W) / 2);
   const logoTop = Math.round(H * 0.14);
 
-  const svgOverlay = buildSvgOverlay({ quote, textColor, isTagline, width: W, height: H });
+  // Place text snugly under the logo — 60px gap below logo bottom
+  const textStartY = logoTop + logoH + 60;
+  const svgOverlay = buildSvgOverlay({ quote, textColor, isTagline, width: W, height: H, textStartY });
 
   // Parse bgColor — handle both hex and rgba
   let background;
