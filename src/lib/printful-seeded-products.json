@@ -1,0 +1,247 @@
+{
+  "storeId": 17763774,
+  "products": [
+    {
+      "slug": "resilience-tee",
+      "name": "Resilience Tee",
+      "printful_id": 423573401,
+      "price": 34,
+      "category": "Apparel",
+      "design": "light-tagline",
+      "blueprint_id": 71,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "becoming-tee",
+      "name": "Becoming Tee",
+      "printful_id": 423573411,
+      "price": 34,
+      "category": "Apparel",
+      "design": "light-quote-3",
+      "blueprint_id": 71,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "resilience-hoodie",
+      "name": "Resilience Hoodie",
+      "printful_id": 423573413,
+      "price": 60,
+      "category": "Apparel",
+      "design": "dark-tagline",
+      "blueprint_id": 146,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "grounded-hoodie",
+      "name": "Grounded Hoodie",
+      "printful_id": 423573420,
+      "price": 60,
+      "category": "Apparel",
+      "design": "dark-quote-5",
+      "blueprint_id": 146,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "healing-sweatshirt",
+      "name": "Healing Sweatshirt",
+      "printful_id": 423573471,
+      "price": 52,
+      "category": "Apparel",
+      "design": "dark-tagline",
+      "blueprint_id": 145,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "still-standing-long-sleeve",
+      "name": "Still Standing Long Sleeve",
+      "printful_id": 423573472,
+      "price": 51,
+      "category": "Apparel",
+      "design": "light-tagline",
+      "blueprint_id": 356,
+      "preview_image_url": "",
+      "variant_count": 15
+    },
+    {
+      "slug": "healing-mug-11oz",
+      "name": "Healing Mug 11oz",
+      "printful_id": 423573475,
+      "price": 15,
+      "category": "Drinkware",
+      "design": "light-tagline",
+      "blueprint_id": 19,
+      "preview_image_url": "",
+      "variant_count": 3
+    },
+    {
+      "slug": "peace-mug-11oz",
+      "name": "Peace Mug 11oz",
+      "printful_id": 423573476,
+      "price": 15,
+      "category": "Drinkware",
+      "design": "light-quote-1",
+      "blueprint_id": 19,
+      "preview_image_url": "",
+      "variant_count": 3
+    },
+    {
+      "slug": "resilience-black-mug",
+      "name": "Resilience Black Mug",
+      "printful_id": 423573478,
+      "price": 20,
+      "category": "Drinkware",
+      "design": "dark-tagline",
+      "blueprint_id": 300,
+      "preview_image_url": "",
+      "variant_count": 2
+    },
+    {
+      "slug": "one-day-at-a-time-tumbler",
+      "name": "One Day At a Time Tumbler",
+      "printful_id": 423573480,
+      "price": 53,
+      "category": "Drinkware",
+      "design": "dark-tagline",
+      "blueprint_id": 585,
+      "preview_image_url": "",
+      "variant_count": 2
+    },
+    {
+      "slug": "carry-your-calm-tumbler",
+      "name": "Carry Your Calm Tumbler",
+      "printful_id": 423573483,
+      "price": 51,
+      "category": "Drinkware",
+      "design": "dark-quote-3",
+      "blueprint_id": 742,
+      "preview_image_url": "",
+      "variant_count": 5
+    },
+    {
+      "slug": "grounded-water-bottle",
+      "name": "Grounded Water Bottle",
+      "printful_id": 423573486,
+      "price": 51,
+      "category": "Drinkware",
+      "design": "dark-tagline",
+      "blueprint_id": 382,
+      "preview_image_url": "",
+      "variant_count": 2
+    },
+    {
+      "slug": "carry-your-calm-tote",
+      "name": "Carry Your Calm Tote",
+      "printful_id": 423573489,
+      "price": 39,
+      "category": "Bags",
+      "design": "light-tagline",
+      "blueprint_id": 367,
+      "preview_image_url": "",
+      "variant_count": 2
+    },
+    {
+      "slug": "still-standing-drawstring-bag",
+      "name": "Still Standing Drawstring Bag",
+      "printful_id": 423573498,
+      "price": 38,
+      "category": "Bags",
+      "design": "dark-tagline",
+      "blueprint_id": 262,
+      "preview_image_url": "",
+      "variant_count": 1
+    },
+    {
+      "slug": "resilience-throw-blanket",
+      "name": "Resilience Throw Blanket",
+      "printful_id": 423573547,
+      "price": 97,
+      "category": "Home & Stationery",
+      "design": "dark-tagline",
+      "blueprint_id": 395,
+      "preview_image_url": "",
+      "variant_count": 3
+    },
+    {
+      "slug": "healing-journey-journal",
+      "name": "Healing Journey Journal",
+      "printful_id": 423573553,
+      "price": 30,
+      "category": "Home & Stationery",
+      "design": "light-tagline",
+      "blueprint_id": 474,
+      "preview_image_url": "",
+      "variant_count": 1
+    },
+    {
+      "slug": "becoming-poster",
+      "name": "Becoming Poster",
+      "printful_id": 423573558,
+      "price": 42,
+      "category": "Home & Stationery",
+      "design": "dark-tagline",
+      "blueprint_id": 1,
+      "preview_image_url": "",
+      "variant_count": 5
+    },
+    {
+      "slug": "peace-throw-pillow",
+      "name": "Peace Throw Pillow",
+      "printful_id": 423573560,
+      "price": 41,
+      "category": "Home & Stationery",
+      "design": "light-tagline",
+      "blueprint_id": 83,
+      "preview_image_url": "",
+      "variant_count": 3
+    },
+    {
+      "slug": "resilience-iphone-case",
+      "name": "Resilience iPhone Case",
+      "printful_id": 423573562,
+      "price": 35,
+      "category": "Accessories",
+      "design": "dark-tagline",
+      "blueprint_id": 601,
+      "preview_image_url": "",
+      "variant_count": 8
+    },
+    {
+      "slug": "healing-samsung-case",
+      "name": "Healing Samsung Case",
+      "printful_id": 423573565,
+      "price": 23,
+      "category": "Accessories",
+      "design": "dark-tagline",
+      "blueprint_id": 267,
+      "preview_image_url": "",
+      "variant_count": 8
+    },
+    {
+      "slug": "healing-all-over-print-beanie",
+      "name": "Healing All-Over Print Beanie",
+      "printful_id": 423573915,
+      "price": 33,
+      "category": "Headwear",
+      "design": "dark-tagline",
+      "blueprint_id": 458,
+      "preview_image_url": "",
+      "variant_count": 3
+    },
+    {
+      "slug": "grounded-all-over-print-bucket-hat",
+      "name": "Grounded All-Over Print Bucket Hat",
+      "printful_id": 423573917,
+      "price": 62,
+      "category": "Headwear",
+      "design": "light-tagline",
+      "blueprint_id": 654,
+      "preview_image_url": "",
+      "variant_count": 3
+    }
+  ]
+}

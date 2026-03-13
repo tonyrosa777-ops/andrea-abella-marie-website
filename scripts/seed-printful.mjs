@@ -33,6 +33,7 @@ if (!API_KEY) throw new Error("PRINTFUL_API_KEY not set");
 
 const BASE = "https://api.printful.com";
 const STORE_ID = "17763774";
+const GITHUB_RAW = "https://raw.githubusercontent.com/tonyrosa777-ops/andrea-abella-marie-website/master/public/images/designs";
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -45,6 +46,14 @@ async function pfetch(path, options = {}) {
   };
   const res = await fetch(`${BASE}${path}`, { ...options, headers });
   const json = await res.json().catch(() => ({}));
+
+  if (res.status === 429) {
+    const retryAfter = parseInt(res.headers.get("retry-after") ?? "60", 10);
+    console.log(`    ⏳ Rate limited — waiting ${retryAfter}s...`);
+    await sleep(retryAfter * 1000 + 1000);
+    return pfetch(path, options); // retry once
+  }
+
   if (!res.ok) {
     const msg = json.error?.message || json.result || JSON.stringify(json);
     throw new Error(`Printful ${res.status} ${path}: ${msg}`);
@@ -57,32 +66,20 @@ const uploadCache = {};
 
 async function uploadDesign(designName) {
   if (uploadCache[designName]) return uploadCache[designName];
-  const filePath = join(ROOT, "public", "images", "designs", `${designName}.png`);
-  if (!existsSync(filePath)) throw new Error(`Design file not found: ${filePath}`);
 
-  const fileBuffer = readFileSync(filePath);
-  const sizeKB = Math.round(fileBuffer.length / 1024);
-  console.log(`    Uploading ${designName}.png (${sizeKB}KB) via multipart...`);
+  // Use publicly accessible GitHub raw URL — Printful requires an external HTTP URL
+  const url = `${GITHUB_RAW}/${designName}.png`;
+  console.log(`    Uploading ${designName}.png via GitHub raw URL...`);
 
-  // Use FormData multipart upload — Printful requires a real URL or binary upload
-  const formData = new FormData();
-  const blob = new Blob([fileBuffer], { type: "image/png" });
-  formData.append("file", blob, `${designName}.png`);
-  formData.append("type", "default");
-
-  const res = await fetch(`${BASE}/files`, {
+  const result = await pfetch("/files", {
     method: "POST",
-    headers: { Authorization: `Bearer ${API_KEY}`, "X-PF-Store-Id": STORE_ID },
-    body: formData,
+    body: JSON.stringify({
+      type: "default",
+      filename: `${designName}.png`,
+      url,
+    }),
   });
 
-  const json = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    const msg = json.error?.message || json.result || JSON.stringify(json);
-    throw new Error(`Upload failed ${res.status}: ${msg}`);
-  }
-
-  const result = json.result ?? json;
   console.log(`    ✓ Uploaded file id: ${result.id}`);
   uploadCache[designName] = result;
   await sleep(600);
@@ -91,10 +88,12 @@ async function uploadDesign(designName) {
 
 // ─── Get variants for a blueprint ─────────────────────────────────────────
 async function getVariants(blueprintId) {
-  const result = await pfetch(`/products/${blueprintId}`);
-  // v1 response: { product: {...}, variants: [...] }
-  const variants = result.variants ?? [];
-  return variants;
+  const res = await fetch(`${BASE}/products/${blueprintId}`, {
+    headers: { Authorization: `Bearer ${API_KEY}` },
+  });
+  const json = await res.json();
+  // v1 response wraps in result: { product: {...}, variants: [...] }
+  return json.result?.variants ?? json.variants ?? [];
 }
 
 // ─── Blueprint catalog (IDs from /v2/catalog-products inspection) ──────────
@@ -117,10 +116,10 @@ const PRODUCTS = [
   // BAGS
   { blueprintId: 367, name: "Carry Your Calm Tote",        design: "light-tagline",  category: "Bags",              maxVariants: 5  },
   { blueprintId: 262, name: "Still Standing Drawstring Bag",design:"dark-tagline",   category: "Bags",              maxVariants: 5  },
-  // HEADWEAR
-  { blueprintId: 252, name: "Resilience Trucker Hat",      design: "light-tagline",  category: "Headwear",          maxVariants: 5  },
-  { blueprintId: 81,  name: "Healing Beanie",              design: "dark-tagline",   category: "Headwear",          maxVariants: 5  },
-  { blueprintId: 379, name: "Grounded Bucket Hat",         design: "light-tagline",  category: "Headwear",          maxVariants: 5  },
+  // HEADWEAR — embroidered items require thread_colors option
+  { blueprintId: 252, name: "Resilience Trucker Hat",      design: "light-tagline",  category: "Headwear",          maxVariants: 5, threadColors: ["#005397", "#A67843", "#FFFFFF"] },
+  { blueprintId: 81,  name: "Healing Beanie",              design: "dark-tagline",   category: "Headwear",          maxVariants: 5, threadColors: ["#FFFFFF", "#A67843"] },
+  { blueprintId: 379, name: "Grounded Bucket Hat",         design: "light-tagline",  category: "Headwear",          maxVariants: 5, threadColors: ["#005397", "#A67843", "#FFFFFF"] },
   // HOME & STATIONERY
   { blueprintId: 395, name: "Resilience Throw Blanket",    design: "dark-tagline",   category: "Home & Stationery", maxVariants: 5  },
   { blueprintId: 474, name: "Healing Journey Journal",     design: "light-tagline",  category: "Home & Stationery", maxVariants: 5  },
@@ -160,27 +159,32 @@ for (const def of PRODUCTS) {
     const retailPrice = Math.round(basePrice * 2.5).toFixed(2);
 
     // Build sync_variants array
-    const syncVariants = selectedVariants.map(v => ({
-      variant_id: v.id,
-      retail_price: retailPrice,
-      files: [{ type: "default", id: designFile.id }],
-    }));
+    const syncVariants = selectedVariants.map(v => {
+      const variant = {
+        variant_id: v.id,
+        retail_price: retailPrice,
+        files: [{ type: "default", id: designFile.id }],
+      };
+      // Embroidered items (headwear) require thread_colors option
+      if (def.threadColors) {
+        variant.options = [{ id: "thread_colors", value: def.threadColors }];
+      }
+      return variant;
+    });
 
     // Create sync product
     await sleep(600);
-    const created = await pfetch("/sync/products", {
+    const syncProduct = { name: def.name };
+    const thumbUrl = designFile.preview_url || designFile.thumbnail_url;
+    if (thumbUrl) syncProduct.thumbnail = thumbUrl;
+
+    const created = await pfetch("/store/products", {
       method: "POST",
-      body: JSON.stringify({
-        sync_product: {
-          name: def.name,
-          thumbnail: designFile.preview_url || designFile.thumbnail_url || "",
-        },
-        sync_variants: syncVariants,
-      }),
+      body: JSON.stringify({ sync_product: syncProduct, sync_variants: syncVariants }),
     });
 
     const productId = created.sync_product?.id ?? created.id;
-    const thumbnail = created.sync_product?.thumbnail_url ?? designFile.preview_url ?? "";
+    const thumbnail = created.sync_product?.thumbnail_url ?? thumbUrl ?? "";
 
     console.log(`  ✓ Created id:${productId} | ${syncVariants.length} variants | $${retailPrice} retail`);
 

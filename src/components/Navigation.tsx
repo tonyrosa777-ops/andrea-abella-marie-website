@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
+import { useCart } from "@/lib/cart";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -18,6 +19,7 @@ const navLinks = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { count, openCart } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -69,6 +71,24 @@ export default function Navigation() {
               {link.name}
             </a>
           ))}
+          {/* Cart icon */}
+          <button
+            onClick={openCart}
+            className="relative text-white/80 hover:text-gold transition-colors p-1"
+            aria-label={`Cart (${count} items)`}
+          >
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            {count > 0 && (
+              <span
+                className="absolute -top-1 -right-1 bg-gold text-navy text-[10px] w-4 h-4 rounded-full flex items-center justify-center"
+                style={{ fontFamily: "var(--font-ui)", fontWeight: 700 }}
+              >
+                {count > 9 ? "9+" : count}
+              </span>
+            )}
+          </button>
           <a href="/book" className="btn-gold text-sm !py-2.5 !px-6">
             Book a Call
           </a>

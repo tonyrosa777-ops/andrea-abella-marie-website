@@ -161,7 +161,6 @@ export interface SyncVariantDetail {
   }>;
   options: unknown[];
   sku: string | null;
-  currency: string;
   availability_status: string;
 }
 
