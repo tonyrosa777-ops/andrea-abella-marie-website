@@ -53,22 +53,8 @@ function buildSvgOverlay({ quote, textColor, isTagline, width, height, textStart
     )
     .join("\n");
 
-  // Footer URL
-  const footerY = startY + lines.length * lineHeight + 80;
-  const footerOpacity = textColor.startsWith("#C8") ? "0.45" : "0.35";
-
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
     ${textEls}
-    <text
-      x="${width / 2}"
-      y="${footerY}"
-      font-family="'Raleway', Arial, sans-serif"
-      font-size="40"
-      fill="${textColor}"
-      opacity="${footerOpacity}"
-      text-anchor="middle"
-      letter-spacing="4"
-    >COACHANDREAABELLAMARIE.COM</text>
   </svg>`);
 }
 
@@ -85,19 +71,21 @@ async function createDesign({
 
   console.log(`  Generating ${outputName}...`);
 
-  // Resize logo to 900px wide, keeping aspect ratio
+  // Trim transparent pixels first, then resize to 900px wide
+  // This ensures text is positioned against the actual visual content, not transparent padding
   const logoResized = await sharp(logoPath)
+    .trim()
     .resize(LOGO_W, null, { fit: "inside" })
     .toBuffer();
 
-  // Get resized logo dimensions
+  // Get actual (trimmed) logo dimensions
   const logoMeta = await sharp(logoResized).metadata();
   const logoH = logoMeta.height ?? 400;
   const logoLeft = Math.round((W - LOGO_W) / 2);
-  const logoTop = Math.round(H * 0.14);
+  const logoTop = Math.round(H * 0.08);
 
-  // Place text snugly under the logo — 60px gap below logo bottom
-  const textStartY = logoTop + logoH + 60;
+  // Place text snugly under the logo — 85px gap below logo bottom
+  const textStartY = logoTop + logoH + 85;
   const svgOverlay = buildSvgOverlay({ quote, textColor, isTagline, width: W, height: H, textStartY });
 
   // Parse bgColor — handle both hex and rgba
