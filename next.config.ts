@@ -1,5 +1,18 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "files.cdn.printful.com",
+      },
+      {
+        protocol: "https",
+        hostname: "f.prda.at",
+      },
+    ],
+  },
+};
 
 export default nextConfig;
