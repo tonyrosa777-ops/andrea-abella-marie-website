@@ -33,7 +33,8 @@ if (!API_KEY) throw new Error("PRINTFUL_API_KEY not set");
 
 const BASE = "https://api.printful.com";
 const STORE_ID = "17763774";
-const GITHUB_RAW = "https://raw.githubusercontent.com/tonyrosa777-ops/andrea-abella-marie-website/master/public/images/designs";
+// jsDelivr CDN — raw.githubusercontent.com is BLOCKED by Printful (returns 0 bytes)
+const GITHUB_RAW = "https://cdn.jsdelivr.net/gh/tonyrosa777-ops/andrea-abella-marie-website@master/public/images/designs";
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -153,10 +154,10 @@ for (const def of PRODUCTS) {
     // Upload design
     const designFile = await uploadDesign(def.design);
 
-    // Compute retail price from first variant base cost × 2.5
+    // Compute retail price: 30% profit margin = base / 0.70
     const baseCostStr = selectedVariants[0].price ?? "15.00";
     const basePrice = parseFloat(baseCostStr) || 15;
-    const retailPrice = Math.round(basePrice * 2.5).toFixed(2);
+    const retailPrice = Math.ceil(basePrice / 0.70).toFixed(2);
 
     // Build sync_variants array
     const syncVariants = selectedVariants.map(v => {
