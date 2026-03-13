@@ -5,7 +5,7 @@
       "slug": "resilience-tee",
       "name": "Resilience Tee",
       "printful_id": 423573401,
-      "price": 20,
+      "price": 17,
       "category": "Apparel",
       "design": "apparel-dark",
       "blueprint_id": 71,
@@ -16,7 +16,7 @@
       "slug": "becoming-tee",
       "name": "Becoming Tee",
       "printful_id": 423573411,
-      "price": 20,
+      "price": 17,
       "category": "Apparel",
       "design": "apparel-dark",
       "blueprint_id": 71,
@@ -27,7 +27,7 @@
       "slug": "resilience-hoodie",
       "name": "Resilience Hoodie",
       "printful_id": 423573413,
-      "price": 35,
+      "price": 32,
       "category": "Apparel",
       "design": "apparel-light",
       "blueprint_id": 146,
@@ -38,7 +38,7 @@
       "slug": "grounded-hoodie",
       "name": "Grounded Hoodie",
       "printful_id": 423573420,
-      "price": 35,
+      "price": 32,
       "category": "Apparel",
       "design": "apparel-light",
       "blueprint_id": 146,
@@ -49,7 +49,7 @@
       "slug": "healing-sweatshirt",
       "name": "Healing Sweatshirt",
       "printful_id": 423573471,
-      "price": 30,
+      "price": 27,
       "category": "Apparel",
       "design": "apparel-light",
       "blueprint_id": 145,
@@ -60,7 +60,7 @@
       "slug": "still-standing-long-sleeve",
       "name": "Still Standing Long Sleeve",
       "printful_id": 423573472,
-      "price": 30,
+      "price": 27,
       "category": "Apparel",
       "design": "apparel-dark",
       "blueprint_id": 356,
@@ -75,7 +75,7 @@
       "category": "Drinkware",
       "design": "light-tagline",
       "blueprint_id": 19,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/0cd75df1212248a1030ec8cddcf7abb7/white-glossy-mug-white-11-oz-handle-on-right-69b380f202f4f.png",
+      "preview_image_url": "",
       "variant_count": 3
     },
     {
@@ -86,7 +86,7 @@
       "category": "Drinkware",
       "design": "light-quote-1",
       "blueprint_id": 19,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/8a2656c6e45f1e70027e5e5b009986fe/white-glossy-mug-white-11-oz-handle-on-right-69b380f8c5af3.png",
+      "preview_image_url": "",
       "variant_count": 3
     },
     {
@@ -97,7 +97,7 @@
       "category": "Drinkware",
       "design": "dark-tagline",
       "blueprint_id": 300,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/3f3565bcac73ce7c0d7ec96e0afc97b3/black-glossy-mug-black-11-oz-handle-on-left-69b38136e3612.png",
+      "preview_image_url": "",
       "variant_count": 2
     },
     {
@@ -108,7 +108,7 @@
       "category": "Drinkware",
       "design": "dark-tagline",
       "blueprint_id": 585,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/3e7ad88d29d061767d0f77c3be94ac40/stainless-steel-tumbler-black-front-69b3813fe25bf.png",
+      "preview_image_url": "",
       "variant_count": 2
     },
     {
@@ -119,7 +119,7 @@
       "category": "Drinkware",
       "design": "dark-quote-3",
       "blueprint_id": 742,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/bb28cecee068ee766407113fb2f4a09e/insulated-tumbler-with-a-straw-black-20-oz-front-69b3817d9be7a.png",
+      "preview_image_url": "",
       "variant_count": 5
     },
     {
@@ -130,7 +130,7 @@
       "category": "Drinkware",
       "design": "dark-tagline",
       "blueprint_id": 382,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/03732ec6011b2f8dd588b1bdf2ee398c/stainless-steel-water-bottle-black-17-oz-front-69b3818690445.png",
+      "preview_image_url": "",
       "variant_count": 2
     },
     {
@@ -141,7 +141,7 @@
       "category": "Bags",
       "design": "light-tagline",
       "blueprint_id": 367,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/08208f8c2d1665d043532d00c2554dbf/eco-tote-bag-black-front-69b381c435b1a.png",
+      "preview_image_url": "",
       "variant_count": 2
     },
     {
@@ -152,18 +152,18 @@
       "category": "Bags",
       "design": "dark-tagline",
       "blueprint_id": 262,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/bab33ca1b128a5d5ec457b466788a64a/all-over-print-drawstring-bag-white-mockup-69b381cdaf271.png",
+      "preview_image_url": "",
       "variant_count": 1
     },
     {
       "slug": "resilience-throw-blanket",
       "name": "Resilience Throw Blanket",
       "printful_id": 423573547,
-      "price": 56,
+      "price": 35,
       "category": "Home & Stationery",
       "design": "dark-tagline",
       "blueprint_id": 395,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/ec3afc067a09a28fb99021eda8586afb/throw-blanket-60x80-front-69b38219a4317.png",
+      "preview_image_url": "",
       "variant_count": 3
     },
     {
@@ -174,29 +174,29 @@
       "category": "Home & Stationery",
       "design": "light-tagline",
       "blueprint_id": 474,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/0a532067ab1cfddbb1c6f0c270697c3f/spiral-notebook-dotted-front-69b3822c808c1.png",
+      "preview_image_url": "",
       "variant_count": 1
     },
     {
       "slug": "becoming-poster",
       "name": "Becoming Poster",
       "printful_id": 423573558,
-      "price": 25,
+      "price": 8,
       "category": "Home & Stationery",
       "design": "dark-tagline",
       "blueprint_id": 1,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/b6f5d9bd64a31a79e7fb6052ee19e242/enhanced-matte-paper-poster-(in)-a1-(23.3x33.1)-front-69b3827411df7.png",
+      "preview_image_url": "",
       "variant_count": 5
     },
     {
       "slug": "peace-throw-pillow",
       "name": "Peace Throw Pillow",
       "printful_id": 423573560,
-      "price": 24,
+      "price": 22,
       "category": "Home & Stationery",
       "design": "light-tagline",
       "blueprint_id": 83,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/5e0a8ad10f5791bb62722f8aed6c08ae/all-over-print-basic-pillow-18x18-front-69b382835fd97.png",
+      "preview_image_url": "",
       "variant_count": 3
     },
     {
@@ -207,7 +207,7 @@
       "category": "Accessories",
       "design": "dark-tagline",
       "blueprint_id": 601,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/1f7539de50fa83d55e44a2b44135646e/tough-case-for-iphone-glossy-iphone-11-pro-max-front-69b382c13cdb6.png",
+      "preview_image_url": "",
       "variant_count": 8
     },
     {
@@ -218,29 +218,18 @@
       "category": "Accessories",
       "design": "dark-tagline",
       "blueprint_id": 267,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/a144865ceefe1eaa4a29e5673e11691b/clear-case-for-samsung-samsung-galaxy-s20-plus-case-on-phone-69b382c94f9b4.png",
+      "preview_image_url": "",
       "variant_count": 8
     },
     {
-      "slug": "healing-all-over-print-beanie",
-      "name": "Healing All-Over Print Beanie",
-      "printful_id": 423573915,
+      "slug": "healing-beanie",
+      "name": "Healing Beanie",
+      "printful_id": 423594473,
       "price": 19,
       "category": "Headwear",
-      "design": "dark-tagline",
+      "design": "logo-only-light",
       "blueprint_id": 458,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/0ec57aae6ad39ec904b5f9b234257dff/all-over-print-beanie-white-front-69b3830a6c723.png",
-      "variant_count": 3
-    },
-    {
-      "slug": "grounded-all-over-print-bucket-hat",
-      "name": "Grounded All-Over Print Bucket Hat",
-      "printful_id": 423573917,
-      "price": 36,
-      "category": "Headwear",
-      "design": "light-tagline",
-      "blueprint_id": 654,
-      "preview_image_url": "https://printful-upload.s3-accelerate.amazonaws.com/tmp/8375b06f2caed84c8b609ef7e4739a99/all-over-print-reversible-bucket-hat-white-front-outside-69b38315a6a35.png",
+      "preview_image_url": "",
       "variant_count": 3
     }
   ]
