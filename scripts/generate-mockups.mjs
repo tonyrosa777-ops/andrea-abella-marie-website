@@ -100,7 +100,7 @@ async function createMockupTask(blueprintId, variantIds, technique, placement, m
 
   // cut-sew products require stitch_color option
   if (technique === "cut-sew") {
-    product.options = [{ id: "stitch_color", value: "white" }];
+    product.product_options = [{ name: "stitch_color", value: "white" }];
   }
 
   const body = {
