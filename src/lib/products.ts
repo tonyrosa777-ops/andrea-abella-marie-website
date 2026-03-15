@@ -7,14 +7,6 @@ export interface Product {
   image?: string;
 }
 
-export interface Bundle {
-  slug: string;
-  name: string;
-  price: number;
-  contents: string;
-  description: string;
-}
-
 export const products: Product[] = [
   { slug: "t-shirt", name: "T-Shirt", price: 28, category: "Everyday Inspiration", description: "Soft, comfortable tee featuring the Andrea Abella Marie logo. Wear your healing journey with pride.", image: "/images/products/shirt-allover-print-white.png" },
   { slug: "mug", name: "Mug", price: 18, category: "Home & Practice", description: "Start your morning ritual with intention. Ceramic mug with the lotus meditation logo.", image: "/images/products/mug-white-black-handle.png" },
@@ -32,19 +24,10 @@ export const products: Product[] = [
   { slug: "compact-umbrella", name: "Compact Umbrella", price: 35, category: "Everyday Inspiration", description: "Stay covered — rain or shine. Compact and branded with the lotus design.", image: "/images/products/umbrella-silver-branded.png" },
 ];
 
-export const bundles: Bundle[] = [
-  { slug: "supporter-care-bundle", name: "Supporter Care Bundle", price: 55, contents: "T-Shirt + Mug or Water Bottle + Keychain + Pen", description: "Everything you need to show your support and start your grounding practice." },
-  { slug: "veterans-edition", name: "Veterans Edition", price: 65, contents: "Special Edition T-Shirt + Mug or Water Bottle + Keychain or Pen + Handwritten Thank-You Note", description: "A special edition bundle honoring those who have served. Includes a personal handwritten note from Andrea." },
-  { slug: "daily-resilience-bundle", name: "Daily Resilience Bundle", price: 40, contents: "Tumbler + Earrings", description: "Sip and shine — daily reminders of your inner strength." },
-  { slug: "mindful-essentials-bundle", name: "Mindful Essentials Bundle", price: 45, contents: "Journal + Water Bottle", description: "The essentials for daily reflection and hydration." },
-  { slug: "founders-supporter-bundle", name: "Founders Supporter Bundle", price: 65, contents: "Bag + Tumbler + Earrings", description: "The ultimate supporter pack — carry, sip, and shine with purpose." },
-];
-
 export const categories = [
   "All",
   "Everyday Inspiration",
   "Wellness On-The-Go",
   "Carry Your Calm",
   "Home & Practice",
-  "Bundles",
 ];
