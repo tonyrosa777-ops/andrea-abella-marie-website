@@ -74,10 +74,10 @@ export default function ShopContent() {
   const { addItem } = useCart();
 
   useEffect(() => {
-    // Build a lookup from printful_id → design slug using seeded data
-    const designMap: Record<number, string> = {};
+    // Build a lookup from printful_id → preview image using seeded data
+    const previewMap: Record<number, string> = {};
     seededProducts.products.forEach((p) => {
-      if (p.design) designMap[p.printful_id] = p.design;
+      if (p.preview_image_url) previewMap[p.printful_id] = p.preview_image_url;
     });
 
     fetch("/api/printful/products")
@@ -92,21 +92,16 @@ export default function ShopContent() {
           // Derive category from product name keywords
           let category = "Accessories";
           const lower = name.toLowerCase();
-          if (/hoodie|tee|tank|long sleeve|jogger|sweatshirt|zip/.test(lower)) category = "Apparel";
-          else if (/mug|tumbler|water bottle|enamel/.test(lower)) category = "Drinkware";
-          else if (/tote|drawstring|crossbody|duffle/.test(lower)) category = "Bags";
+          if (/hoodie|tee|tank|long sleeve|jogger|sweatshirt|zip|raglan/.test(lower)) category = "Apparel";
+          else if (/mug|tumbler|water bottle|enamel|can cooler/.test(lower)) category = "Drinkware";
+          else if (/tote|drawstring|crossbody|duffle|backpack|laptop sleeve|apron/.test(lower)) category = "Bags";
           else if (/beanie|bucket hat|hat|snapback/.test(lower)) category = "Headwear";
-          else if (/pillow|blanket|poster|notebook|canvas|journal/.test(lower)) category = "Home & Stationery";
-          else if (/phone|keychain|bookmark/.test(lower)) category = "Accessories";
+          else if (/pillow|blanket|poster|notebook|canvas|journal|candle|pennant|banner/.test(lower)) category = "Home & Stationery";
+          else if (/phone|keychain|bookmark|teddy|bear/.test(lower)) category = "Accessories";
 
-          // Use Printful thumbnail if available, else fall back to our branded design PNG
+          // Use Printful thumbnail if available, else fall back to seeded preview image
           const pfThumb = raw.thumbnail_url || p.thumbnail_url;
-          const designFile = designMap[p.id];
-          const image = (pfThumb && pfThumb.length > 10)
-            ? pfThumb
-            : designFile
-              ? `/images/designs/${designFile}.png`
-              : undefined;
+          const image = (pfThumb && pfThumb.length > 10) ? pfThumb : previewMap[p.id];
 
           return { id: p.id, slug, name, price: 0, category, image };
         });
@@ -114,7 +109,7 @@ export default function ShopContent() {
       })
       .catch(() => {
         // Fallback: load from seeded JSON directly
-        const seeded = seededProducts as { products: Array<{ slug: string; name: string; price: number; category: string; preview_image_url: string; printful_id: number; design?: string }> };
+        const seeded = seededProducts as { products: Array<{ slug: string; name: string; price: number; category: string; preview_image_url?: string; printful_id: number }> };
         setProducts(
           seeded.products.map((p) => ({
             id: p.printful_id,
@@ -122,7 +117,7 @@ export default function ShopContent() {
             name: p.name,
             price: p.price,
             category: p.category,
-            image: p.design ? `/images/designs/${p.design}.png` : undefined,
+            image: p.preview_image_url,
           }))
         );
       })
