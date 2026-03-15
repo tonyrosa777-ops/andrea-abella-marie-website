@@ -99,11 +99,15 @@ export default function ShopContent() {
           else if (/pillow|blanket|poster|notebook|canvas|journal|candle|pennant|banner/.test(lower)) category = "Home & Stationery";
           else if (/phone|keychain|bookmark|teddy|bear/.test(lower)) category = "Accessories";
 
+          // p.id for live SyncProduct data; (p as any).printful_id for seeded fallback data
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const productId: number = p.id ?? (p as any).printful_id;
+
           // Use Printful thumbnail if available, else fall back to seeded preview image
           const pfThumb = raw.thumbnail_url || p.thumbnail_url;
-          const image = (pfThumb && pfThumb.length > 10) ? pfThumb : previewMap[p.id];
+          const image = (pfThumb && pfThumb.length > 10) ? pfThumb : previewMap[productId];
 
-          return { id: p.id, slug, name, price: 0, category, image };
+          return { id: productId, slug, name, price: 0, category, image };
         });
         setProducts(normalized);
       })
