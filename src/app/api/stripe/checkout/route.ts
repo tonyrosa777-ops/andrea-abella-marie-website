@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2026-02-25.clover",
-});
+export const dynamic = "force-dynamic";
 
 export interface CartItemPayload {
   id: string | number;
@@ -22,16 +20,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No items in cart" }, { status: 400 });
     }
 
-    // Check for placeholder Stripe key
-    if (
-      !process.env.STRIPE_SECRET_KEY ||
-      process.env.STRIPE_SECRET_KEY.includes("REPLACE_WITH")
-    ) {
+    if (!process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY.includes("REPLACE_WITH")) {
       return NextResponse.json(
-        { error: "Stripe is not configured yet. Please add your Stripe API keys to .env.local." },
+        { error: "Stripe is not configured yet." },
         { status: 503 }
       );
     }
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2026-02-25.clover",
+    });
 
     const origin = req.headers.get("origin") ?? "http://localhost:3000";
 
