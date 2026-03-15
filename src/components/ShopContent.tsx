@@ -6,10 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 import { useCart } from "@/lib/cart";
-import { bundles } from "@/lib/products";
 import seededProducts from "@/lib/printful-seeded-products.json";
 
-const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Headwear", "Home & Stationery", "Accessories", "Bundles"];
+const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Headwear", "Home & Stationery", "Accessories"];
 
 interface PrintfulProduct {
   id: number;
@@ -135,12 +134,9 @@ export default function ShopContent() {
   seededProducts.products.forEach((p) => { seededPrices[p.printful_id] = p.price; });
 
   const filteredProducts =
-    activeCategory === "All" || activeCategory === "Bundles"
+    activeCategory === "All"
       ? products
       : products.filter((p) => p.category === activeCategory);
-
-  const showBundles = activeCategory === "All" || activeCategory === "Bundles";
-  const showProducts = activeCategory !== "Bundles";
 
   function handleAddToCart(product: NormalizedProduct) {
     const price = seededPrices[product.id] ?? product.price ?? 0;
@@ -227,19 +223,16 @@ export default function ShopContent() {
       <section className="py-16 md:py-24" style={{ background: "var(--color-parchment)" }}>
         <div className="max-w-6xl mx-auto px-6">
 
-          {/* Individual Items */}
-          {showProducts && (
-            <>
-              <AnimatedSection>
-                <h2
-                  className="text-2xl text-navy mb-8"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-                >
-                  Individual <span className="text-gold italic">Items</span>
-                </h2>
-              </AnimatedSection>
+          <AnimatedSection>
+            <h2
+              className="text-2xl text-navy mb-8"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+            >
+              Individual <span className="text-gold italic">Items</span>
+            </h2>
+          </AnimatedSection>
 
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {loading
                   ? Array.from({ length: 8 }).map((_, i) => (
                       <div key={i}>
@@ -309,68 +302,7 @@ export default function ShopContent() {
                         </AnimatedSection>
                       );
                     })}
-              </div>
-            </>
-          )}
-
-          {/* Bundles */}
-          {showBundles && (
-            <>
-              <AnimatedSection>
-                <h2
-                  className="text-2xl text-navy mb-8"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-                >
-                  Curated <span className="text-gold italic">Bundles</span>
-                </h2>
-              </AnimatedSection>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {bundles.map((bundle, i) => (
-                  <AnimatedSection key={bundle.slug} delay={i * 0.08}>
-                    <div className="bg-white rounded-2xl p-6 card-hover border border-gold/10 h-full flex flex-col">
-                      <div className="mb-1">
-                        <span
-                          className="px-3 py-1 bg-gold/10 text-gold text-[10px] rounded-full uppercase tracking-widest"
-                          style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
-                        >
-                          Bundle
-                        </span>
-                      </div>
-                      <h3
-                        className="text-lg text-navy mt-3 mb-2"
-                        style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-                      >
-                        {bundle.name}
-                      </h3>
-                      <p className="text-sm text-charcoal/60 mb-2 flex-1">{bundle.description}</p>
-                      <p
-                        className="text-xs text-charcoal/50 mb-4"
-                        style={{ fontFamily: "var(--font-ui)" }}
-                      >
-                        Includes: {bundle.contents}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span
-                          className="text-xl text-gold"
-                          style={{ fontFamily: "var(--font-display)", fontWeight: 900 }}
-                        >
-                          ${bundle.price}
-                        </span>
-                        <a
-                          href={`mailto:andrea8466@icloud.com?subject=Bundle Inquiry: ${encodeURIComponent(bundle.name)}`}
-                          className="px-4 py-2 border border-gold text-gold text-sm rounded-full hover:bg-gold/10 transition-all"
-                          style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
-                        >
-                          Inquire
-                        </a>
-                      </div>
-                    </div>
-                  </AnimatedSection>
-                ))}
-              </div>
-            </>
-          )}
+          </div>
         </div>
       </section>
 
