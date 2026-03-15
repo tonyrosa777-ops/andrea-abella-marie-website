@@ -126,30 +126,11 @@ const GOLD = "#C8A84E";
 const NAVY = "#1B2A4A";
 
 const designs = [
-  // --- DARK DESIGNS (navy bg + light logo + gold text) ---
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-tagline.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-1.png",  quote: "You survived. Now you rebuild." },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-2.png",  quote: "Healing isn't linear. Neither are you." },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-3.png",  quote: "Still standing. Still healing." },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-4.png",  quote: "The bravest thing you did was stay." },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-5.png",  quote: "Grounded. Whole. Becoming." },
-  { bgColor: DARK_BG, logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "dark-quote-6.png",  quote: "Soft enough to feel. Strong enough to heal." },
+  // --- LOGO-ONLY (transparent bg, no text — hats, beanies, anything with a front panel badge) ---
+  { logoFile: "logo-dark-blue-figure.png",   outputName: "logo-only-dark.png",  quote: "", transparent: true },
+  { logoFile: "logo-light-white-figure.png", outputName: "logo-only-light.png", quote: "", transparent: true },
 
-  // --- LIGHT DESIGNS (white bg + dark logo + navy text) ---
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-tagline.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-1.png", quote: "Peace is your birthright." },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-2.png", quote: "One breath at a time." },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-3.png", quote: "Carry your calm." },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-4.png", quote: "Your story isn't over." },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-5.png", quote: "Trauma ends. Healing begins." },
-  { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-6.png", quote: "Your nervous system remembers. So does your strength." },
-
-  // --- LOGO-ONLY DESIGNS (transparent bg, NO text — for beanie/hat front panels where text wraps seams) ---
-  { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "logo-only-dark.png",  quote: "", transparent: true },
-  { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "logo-only-light.png", quote: "", transparent: true },
-
-  // --- APPAREL DESIGNS (transparent bg — for T-shirts, hoodies, sweatshirts, long sleeves) ---
-  // Transparent so the shirt's own fabric color shows through — no ugly colored rectangle on chest
+  // --- APPAREL (transparent bg + tagline — T-shirts, hoodies, sweatshirts, long sleeves) ---
   { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "apparel-dark.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
   { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "apparel-light.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
 ];
