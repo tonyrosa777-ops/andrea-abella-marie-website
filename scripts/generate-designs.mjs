@@ -89,13 +89,12 @@ async function createDesign({
 
   if (transparent) {
     // Logo-only: transparent background — for hat/beanie front panels
+    const layers = [{ input: logoResized, left: logoLeft, top: logoTop }];
+    if (quote) layers.push({ input: svgOverlay, left: 0, top: 0 });
     await sharp({
       create: { width: W, height: H, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } },
     })
-      .composite([
-        { input: logoResized, left: logoLeft, top: logoTop },
-        { input: svgOverlay, left: 0, top: 0 },
-      ])
+      .composite(layers)
       .png({ compressionLevel: 8 })
       .toFile(outputPath);
   } else {
@@ -145,9 +144,9 @@ const designs = [
   { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-5.png", quote: "Trauma ends. Healing begins." },
   { bgColor: LIGHT_BG, logoFile: "logo-dark-blue-figure.png", textColor: NAVY, outputName: "light-quote-6.png", quote: "Your nervous system remembers. So does your strength." },
 
-  // --- LOGO-ONLY DESIGNS (transparent bg — for hat/beanie front panels) ---
-  { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "logo-only-dark.png",  quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
-  { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "logo-only-light.png", quote: "Resilience. Healing. One Day At a Time.", isTagline: true, transparent: true },
+  // --- LOGO-ONLY DESIGNS (transparent bg, NO text — for beanie/hat front panels where text wraps seams) ---
+  { logoFile: "logo-dark-blue-figure.png",   textColor: NAVY, outputName: "logo-only-dark.png",  quote: "", transparent: true },
+  { logoFile: "logo-light-white-figure.png", textColor: GOLD, outputName: "logo-only-light.png", quote: "", transparent: true },
 
   // --- APPAREL DESIGNS (transparent bg — for T-shirts, hoodies, sweatshirts, long sleeves) ---
   // Transparent so the shirt's own fabric color shows through — no ugly colored rectangle on chest
