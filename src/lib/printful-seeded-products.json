@@ -18,6 +18,8 @@
     { "slug": "insulated-tumbler-with-a-straw", "name": "Insulated Tumbler with Straw", "printful_id": 423853952, "price": 35, "category": "Drinkware", "preview_image_url": "https://files.cdn.printful.com/files/fd1/fd15c0802108714c90eddd1055992b08_preview.png" },
     { "slug": "scented-soy-candle", "name": "Scented Soy Candle", "printful_id": 423854145, "price": 15, "category": "Home & Stationery", "preview_image_url": "https://files.cdn.printful.com/files/be1/be19a1faecfe38dab8c1090c420b7b5f_preview.png" },
     { "slug": "teddy-bear-with-a-t-shirt", "name": "Teddy Bear with T-Shirt", "printful_id": 423854240, "price": 0, "category": "Accessories", "preview_image_url": "https://files.cdn.printful.com/files/13b/13b1254350228bf31ed24c8b39397ad4_preview.png" },
-    { "slug": "pennant-banner", "name": "Pennant Banner", "printful_id": 423854366, "price": 19, "category": "Home & Stationery", "preview_image_url": "https://files.cdn.printful.com/files/57c/57cd4bc29d757ad07593b9223bd7079c_preview.png" }
+    { "slug": "pennant-banner", "name": "Pennant Banner", "printful_id": 423854366, "price": 19, "category": "Home & Stationery", "preview_image_url": "https://files.cdn.printful.com/files/57c/57cd4bc29d757ad07593b9223bd7079c_preview.png" },
+    { "slug": "crop-hoodie", "name": "Crop Hoodie", "printful_id": 424087627, "price": 54.50, "category": "Apparel", "preview_image_url": "https://files.cdn.printful.com/files/061/0615b07248a8620ab3c941f19247339a_preview.png" },
+    { "slug": "unisex-heavy-blend-zip-hoodie", "name": "Unisex Heavy Blend Zip Hoodie", "printful_id": 424093487, "price": 43.00, "category": "Apparel", "preview_image_url": "https://files.cdn.printful.com/files/4cf/4cfb9a1e8210f37cedd78f11c3875a15_preview.png" }
   ]
 }
