@@ -92,7 +92,7 @@ export default function ShopContent() {
           // Derive category from product name keywords
           let category = "Accessories";
           const lower = name.toLowerCase();
-          if (/hoodie|tee|tank|long sleeve|jogger|sweatshirt|zip|raglan/.test(lower)) category = "Apparel";
+          if (/hoodie|\btee\b|tank|long sleeve|jogger|sweatshirt|zip hoodie|raglan/.test(lower)) category = "Apparel";
           else if (/mug|tumbler|water bottle|enamel|can cooler/.test(lower)) category = "Drinkware";
           else if (/tote|drawstring|crossbody|duffle|backpack|laptop sleeve|apron/.test(lower)) category = "Bags";
           else if (/beanie|bucket hat|hat|snapback/.test(lower)) category = "Headwear";
