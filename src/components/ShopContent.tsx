@@ -8,7 +8,7 @@ import AnimatedSection from "./AnimatedSection";
 import { useCart } from "@/lib/cart";
 import seededProducts from "@/lib/printful-seeded-products.json";
 
-const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Headwear", "Home & Stationery", "Accessories"];
+const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Home & Stationery", "Accessories"];
 
 interface PrintfulProduct {
   id: number;
@@ -94,9 +94,9 @@ export default function ShopContent() {
           const lower = name.toLowerCase();
           if (/hoodie|\btee\b|tank|long sleeve|jogger|sweatshirt|zip hoodie|raglan/.test(lower)) category = "Apparel";
           else if (/mug|tumbler|water bottle|enamel|can cooler/.test(lower)) category = "Drinkware";
-          else if (/tote|drawstring|crossbody|duffle|backpack|laptop sleeve|apron/.test(lower)) category = "Bags";
+          else if (/tote|drawstring|crossbody|duffle|backpack|laptop sleeve/.test(lower)) category = "Bags";
           else if (/beanie|bucket hat|hat|snapback/.test(lower)) category = "Headwear";
-          else if (/pillow|blanket|poster|notebook|canvas|journal|candle|pennant|banner/.test(lower)) category = "Home & Stationery";
+          else if (/pillow|blanket|poster|notebook|canvas|journal|candle|pennant|banner|apron/.test(lower)) category = "Home & Stationery";
           else if (/phone|keychain|bookmark|teddy|bear/.test(lower)) category = "Accessories";
 
           // p.id for live SyncProduct data; (p as any).printful_id for seeded fallback data
