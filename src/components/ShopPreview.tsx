@@ -23,29 +23,39 @@ export default function ShopPreview() {
   const [products, setProducts] = useState<PreviewProduct[]>(FALLBACK);
 
   useEffect(() => {
+    // Build lookups from seeded data for price and image fallbacks
+    const priceMap: Record<number, number> = {};
+    const previewMap: Record<number, string> = {};
+    seededProducts.products.forEach((p) => {
+      priceMap[p.printful_id] = p.price;
+      if (p.preview_image_url) previewMap[p.printful_id] = p.preview_image_url;
+    });
+
     fetch("/api/printful/products")
       .then((r) => r.json())
-      .then((data: Array<{ id: number; name?: string; sync_product?: { name: string; thumbnail_url?: string } }>) => {
+      .then((data: Array<{ id?: number; printful_id?: number; name?: string; thumbnail_url?: string; preview_image_url?: string; sync_product?: { name: string; thumbnail_url?: string } }>) => {
         if (!Array.isArray(data) || data.length === 0) return;
-        const priceMap: Record<number, number> = {};
-        seededProducts.products.forEach((p) => { priceMap[p.printful_id] = p.price; });
 
         const normalized: PreviewProduct[] = data.slice(0, 6).map((p) => {
           const raw = p.sync_product ?? p;
           const name = (raw as { name?: string }).name ?? "Product";
           const lower = name.toLowerCase();
           let category = "Accessories";
-          if (/hoodie|tee|tank|long sleeve|jogger|zip/.test(lower)) category = "Apparel";
-          else if (/mug|tumbler|water bottle/.test(lower)) category = "Drinkware";
-          else if (/tote|drawstring|crossbody/.test(lower)) category = "Bags";
-          else if (/beanie|bucket hat|hat/.test(lower)) category = "Headwear";
-          else if (/pillow|blanket|poster|notebook|journal/.test(lower)) category = "Home & Stationery";
+          if (/hoodie|\btee\b|tank|long sleeve|jogger|zip hoodie|raglan/.test(lower)) category = "Apparel";
+          else if (/mug|tumbler|water bottle|enamel|can cooler/.test(lower)) category = "Drinkware";
+          else if (/tote|drawstring|crossbody|duffle|backpack|laptop sleeve/.test(lower)) category = "Bags";
+          else if (/pillow|blanket|poster|notebook|canvas|journal|candle|pennant|banner|apron/.test(lower)) category = "Home & Stationery";
+
+          // Handle both live API shape (id + thumbnail_url) and seeded fallback shape (printful_id + preview_image_url)
+          const productId: number = p.id ?? p.printful_id ?? 0;
+          const pfThumb = (raw as { thumbnail_url?: string }).thumbnail_url || p.preview_image_url;
+          const image = (pfThumb && pfThumb.length > 10) ? pfThumb : previewMap[productId];
 
           return {
             name,
-            price: priceMap[p.id] ?? 0,
+            price: priceMap[productId] ?? 0,
             category,
-            image: (raw as { thumbnail_url?: string }).thumbnail_url ?? undefined,
+            image,
           };
         });
         setProducts(normalized);
