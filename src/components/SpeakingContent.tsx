@@ -185,7 +185,7 @@ export default function SpeakingContent() {
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 <p>
-                  Andrea spent 8 years in the U.S. Navy as a Petty Officer First Class — the only woman in her unit through two deployments to Kuwait and Iraq. When she came home, she spent 7 years fighting the VA to be recognized for the PTSD she earned in service. Three hospitalizations. A system that kept asking her to prove her pain was real enough.
+                  Andrea spent 8 years in the U.S. Navy as a Petty Officer First Class — the only woman in her unit during her deployment to Kuwait and Iraq. When she came home, she spent 7 years fighting the VA to be recognized for the PTSD she earned in service. Three hospitalizations. A system that kept asking her to prove her pain was real enough.
                 </p>
                 <p>
                   She came out the other side not with a story of triumph over adversity — but with a deeply practical understanding of what it actually takes to rebuild a nervous system, an identity, and a life. That understanding is what she brings into every room she speaks in.

@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "Do you work with veterans specifically?",
-    a: "Yes — and not just as a specialty. Andrea is a veteran. She spent 8 years in the Navy, was the only woman in her unit through two deployments, and spent 7 years fighting the VA for her 100% service-connected PTSD rating. She understands the identity shifts, the hypervigilance, the way the military trains you to suppress and perform. This isn't a niche she studied. It's a life she lived.",
+    a: "Yes — and not just as a specialty. Andrea is a veteran. She spent 8 years in the Navy, was the only woman in her unit during her deployment to Kuwait and Iraq, and spent 7 years fighting the VA for her 100% service-connected PTSD rating. She understands the identity shifts, the hypervigilance, the way the military trains you to suppress and perform. This isn't a niche she studied. It's a life she lived.",
   },
   {
     q: "Can I switch tiers?",

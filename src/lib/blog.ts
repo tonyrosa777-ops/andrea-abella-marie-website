@@ -32,7 +32,7 @@ export const posts: BlogPost[] = [
     body: [
       {
         type: "paragraph",
-        text: "I spent seven years fighting the VA to be recognized for PTSD I earned in eight years of Navy service — including two deployments to Kuwait and Iraq where I was the only woman in my unit. Seven years of appointments, denials, appeals, and forms. Seven years of being asked to prove that what happened to me was real enough, bad enough, service-connected enough to matter.",
+        text: "I spent seven years fighting the VA to be recognized for PTSD I earned in eight years of Navy service — including a deployment to Kuwait and Iraq where I was the only woman in my unit. Seven years of appointments, denials, appeals, and forms. Seven years of being asked to prove that what happened to me was real enough, bad enough, service-connected enough to matter.",
       },
       {
         type: "paragraph",
@@ -640,7 +640,7 @@ export const posts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "What I actually had was a nervous system that had been running in survival mode for so long it had forgotten what safety felt like. Eight years in the military, two deployments, years of fighting the VA for a PTSD claim — my system had been in threat-response mode almost continuously. It wasn't a mindset problem. It was a physiological state. And physiological states don't respond to willpower.",
+        text: "What I actually had was a nervous system that had been running in survival mode for so long it had forgotten what safety felt like. Eight years in the military, a deployment to Kuwait and Iraq, years of fighting the VA for a PTSD claim — my system had been in threat-response mode almost continuously. It wasn't a mindset problem. It was a physiological state. And physiological states don't respond to willpower.",
       },
       {
         type: "heading",
