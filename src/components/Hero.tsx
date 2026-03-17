@@ -229,8 +229,6 @@ export default function Hero() {
       <Stars />
       <CosmicSunrise />
       <GoldParticles />
-      <NeuralTendrils />
-
       {/* Content */}
       <div className="relative z-10 text-center px-6 py-24">
         <motion.div
