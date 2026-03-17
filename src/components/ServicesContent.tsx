@@ -36,19 +36,19 @@ const faqs = [
 const testimonials = [
   {
     quote:
-      "I'd tried other coaches before and always quit after a few weeks. With Andrea, I finally understood why — my nervous system wasn't regulated enough to take in what anyone was saying. She built me a foundation I didn't know I was missing. Four months in, I sleep through the night for the first time in years.",
+      "I'd tried two other coaches before Andrea. Quit both within a month. I don't know why it stuck this time, but it did. Four months in and I sleep through the night. That alone made it worth it.",
     name: "Marcus T.",
     role: "Army Veteran, 6 years service",
   },
   {
     quote:
-      "I came in functioning — job, family, showing up. But I was running on fumes and didn't realize it. The Deep Healing Container changed how I understand myself. I stopped white-knuckling through every day. I started actually feeling safe in my own life.",
+      "I work the ER, my husband deployed twice, I've got two kids. Everything looked fine from the outside. But I was exhausted in a way that sleep couldn't fix. Six months later I actually enjoy my days off instead of dreading them.",
     name: "Sarah K.",
     role: "ER Nurse & Combat Spouse",
   },
   {
     quote:
-      "I'd spent 20 years being strong for everyone else. Six months with Andrea at the VIP level and I rebuilt my identity from the inside out. Not who the military made me. Not who trauma made me. Just — me. Worth every dollar.",
+      "Twenty-two years as a Chief. When I retired the plan was to finally relax. Instead I was miserable. Resisted getting help for two years. My wife finally said enough. I came out of the VIP program knowing who I am without the uniform. That was the work I needed.",
     name: "James R.",
     role: "Navy Chief Petty Officer, Retired",
   },

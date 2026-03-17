@@ -328,7 +328,7 @@ export default function SpeakingContent() {
               className="text-xl md:text-2xl text-white italic leading-relaxed mb-8"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              &ldquo;Andrea was the most impactful speaker we&apos;ve had at our veteran wellness summit in five years. She didn&apos;t lecture — she held the room in a way that made people feel genuinely safe. We had attendees come up afterward in tears. Not from pain. From relief.&rdquo;
+              &ldquo;I&apos;ve booked speakers for this summit for seven years. Most deliver their material and leave. Andrea stayed two hours after talking with attendees one-on-one. People who hadn&apos;t opened up in years were talking. Three people signed up for follow-up services that same night. We&apos;re bringing her back.&rdquo;
             </blockquote>
             <div>
               <p

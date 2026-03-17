@@ -6,25 +6,25 @@ import AnimatedSection from "./AnimatedSection";
 
 const testimonials = [
   {
-    text: "Andrea helped me feel safe for the first time in years. Her approach is nothing like the typical coaching I'd tried before — it's real, it's grounded, and it actually works.",
+    text: "I spent three years avoiding crowds. Wouldn't go to my kid's soccer games without scoping exits first. Two months with Andrea and I made it through Thanksgiving dinner — whole family, no problem. I didn't think that was possible anymore.",
     name: "Sarah M.",
     role: "Military Veteran",
     stars: 5,
   },
   {
-    text: "I came to Andrea feeling completely disconnected from myself. Through our work together, I finally learned what it means to regulate my nervous system and trust myself again.",
+    text: "Twelve years on the job, you build up walls and call it strength. My partner noticed I was different before I did. Something settled. I stopped snapping at people. I'm not sure exactly what shifted but whatever it was, it worked.",
     name: "James R.",
     role: "First Responder",
     stars: 5,
   },
   {
-    text: "Working with Andrea changed my life. She doesn't just coach you — she meets you exactly where you are and helps you rebuild from the ground up. I can't recommend her enough.",
+    text: "I kept telling myself I was fine because I was still functioning. Going to work, handling everything. Andrea was the first person to point out that functioning isn't the same as okay. That one conversation changed things.",
     name: "Michelle T.",
     role: "Healthcare Professional",
     stars: 5,
   },
   {
-    text: "For the first time, someone understood that I didn't need motivation — I needed safety. Andrea gave me the tools to feel grounded and confident again.",
+    text: "I make decisions worth millions and I couldn't get through a Sunday without anxiety eating me alive. Tried therapy, medication, retreats. None of it stuck. I'm not the same person I was six months ago.",
     name: "David K.",
     role: "Corporate Executive",
     stars: 5,

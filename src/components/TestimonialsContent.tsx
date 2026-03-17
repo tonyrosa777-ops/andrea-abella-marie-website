@@ -8,37 +8,37 @@ const testimonials = [
   {
     name: "Sarah M.",
     role: "Healthcare Professional",
-    text: "Andrea helped me understand that my constant state of fight-or-flight wasn't normal — and more importantly, that there was a way out. For the first time in years, I feel like I can breathe.",
+    text: "I'm a nurse. I know what burnout looks like in my patients. Took me a lot longer to see it in myself. I was running on autopilot and had been for years. My husband says I actually laugh again. That's the thing that got me.",
     stars: 5,
   },
   {
     name: "James T.",
     role: "Army Veteran",
-    text: "After 20 years of service, I didn't know who I was without the uniform. Andrea gave me a safe space to figure that out. No judgment, no pressure — just real support.",
+    text: "Twenty years in, and when I got out I had no idea what to do with a Tuesday. I'd built my whole identity around the Army and suddenly it was gone. Andrea didn't try to push me anywhere. She helped me figure out who I actually am. That sounds simple but it was not.",
     stars: 5,
   },
   {
     name: "Michelle R.",
     role: "Caregiver",
-    text: "I was so focused on taking care of everyone else that I forgot about myself. Andrea reminded me that I matter too, and gave me the tools to actually feel that truth in my body.",
+    text: "Five years caring for my mom with dementia while raising two kids. I was running on empty for so long I thought that was just how life felt. I'm not going to say it's all fixed. But most mornings I wake up feeling like myself again. That matters.",
     stars: 5,
   },
   {
     name: "David K.",
     role: "First Responder",
-    text: "I thought I was fine. I looked fine. But inside I was drowning. Working with Andrea showed me what safety actually feels like. Game changer.",
+    text: "I'm a fire captain. Trained to push through, stay calm, keep moving. Turns out I'd been doing that for so long I didn't know how to stop. A coworker recommended Andrea. I figured I'd try it once. Kept going back.",
     stars: 5,
   },
   {
     name: "Lisa W.",
     role: "Corporate Executive",
-    text: "The nervous system work Andrea does is unlike anything I've experienced. It's not talk therapy, it's not positive affirmations — it's something deeper and more real.",
+    text: "I was skeptical, honestly. I'd done years of therapy and it helped but there was still something stuck. I came in expecting to just talk about my problems. What actually happened is hard to describe. I just feel less like I'm fighting myself.",
     stars: 5,
   },
   {
     name: "Roberto A.",
     role: "Marine Veteran",
-    text: "Andrea understands trauma at a level most coaches don't. She's been through it herself, and you can feel that in every session. She doesn't just teach — she holds space.",
+    text: "I've had people try to help me before. Therapists, programs, the whole VA carousel. Most meant well but I could tell they didn't really get it. Andrea gets it. She's not reading from a script. She's been in it. That made all the difference.",
     stars: 5,
   },
 ];
