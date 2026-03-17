@@ -241,7 +241,7 @@ export default function ServicesContent() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-10 items-center">
-                <div>
+                <div className="pt-8 md:pt-0">
                   <p className="section-label mb-4">Application Required</p>
                   <h2
                     className="text-3xl md:text-4xl text-white mb-4"
