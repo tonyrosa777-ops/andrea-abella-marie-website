@@ -151,8 +151,11 @@ export default function ServicesContent() {
         </div>
       </section>
 
+      {/* Gold bridge divider */}
+      <div className="h-px" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(200,168,78,0.6) 50%, transparent 100%)" }} />
+
       {/* Credential Strip */}
-      <section className="py-5 border-y border-gold/20" style={{ background: "#0A1845" }}>
+      <section className="py-5 border-b border-gold/20" style={{ background: "#0A1845" }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
             {credentials.map((c) => (
@@ -197,24 +200,15 @@ export default function ServicesContent() {
           <div className="grid md:grid-cols-3 gap-8">
             {painPoints.map((p, i) => (
               <AnimatedSection key={p.title} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-8 border border-gold/10 h-full">
-                  <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-5">
-                    <svg
-                      className="w-5 h-5 text-gold"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707"
-                      />
-                    </svg>
-                  </div>
+                <div
+                  className="bg-white rounded-2xl p-8 h-full"
+                  style={{
+                    borderLeft: "4px solid var(--color-gold)",
+                    boxShadow: "0 2px 16px rgba(13,31,92,0.06)",
+                  }}
+                >
                   <h3
-                    className="text-navy text-lg mb-3 leading-snug"
+                    className="text-navy text-xl mb-3 leading-snug"
                     style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
                   >
                     {p.title}
@@ -344,123 +338,135 @@ export default function ServicesContent() {
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 pt-4">
-            {coachingTiers.map((tier, i) => (
-              <AnimatedSection key={tier.name} delay={i * 0.1}>
-                <div
-                  className={`relative bg-white rounded-2xl card-hover h-full flex flex-col ${
-                    tier.badge === "Most Popular"
-                      ? "border-2 border-gold shadow-lg"
-                      : "border border-gold/10"
-                  }`}
-                >
-                  {tier.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <span
-                        className={`px-4 py-1 text-xs rounded-full uppercase tracking-widest ${
-                          tier.badge === "Most Popular"
-                            ? "bg-gold text-navy"
-                            : "bg-navy text-gold"
-                        }`}
-                        style={{ fontFamily: "var(--font-ui)", fontWeight: 700 }}
-                      >
-                        {tier.badge}
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="p-8 flex flex-col flex-1">
-                    <h3
-                      className="text-xl text-navy mb-1"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 700,
-                      }}
-                    >
-                      {tier.name}
-                    </h3>
-                    <p
-                      className="text-charcoal/50 text-xs mb-5 uppercase tracking-wider"
-                      style={{ fontFamily: "var(--font-ui)" }}
-                    >
-                      {tier.ideal}
-                    </p>
-
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span
-                        className="text-3xl text-gold"
-                        style={{
-                          fontFamily: "var(--font-display)",
-                          fontWeight: 900,
-                        }}
-                      >
-                        {tier.price}
-                      </span>
-                      <span
-                        className="text-charcoal/50 text-sm"
-                        style={{ fontFamily: "var(--font-ui)" }}
-                      >
-                        {tier.period}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {tier.features.map((f) => (
-                        <li
-                          key={f}
-                          className="flex items-start gap-2 text-sm text-charcoal/70"
+          <div className="grid md:grid-cols-3 gap-8 pt-4 items-start">
+            {coachingTiers.map((tier, i) => {
+              const isPopular = tier.badge === "Most Popular";
+              return (
+                <AnimatedSection key={tier.name} delay={i * 0.1}>
+                  <motion.div
+                    className={`relative rounded-2xl h-full flex flex-col ${
+                      isPopular
+                        ? "bg-navy shadow-2xl"
+                        : "bg-white border border-gold/10 shadow-sm"
+                    }`}
+                    whileHover={{
+                      y: -8,
+                      boxShadow: isPopular
+                        ? "0 32px 64px rgba(200,168,78,0.22)"
+                        : "0 20px 48px rgba(13,31,92,0.13)",
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    {tier.badge && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                        <span
+                          className={`px-4 py-1 text-xs rounded-full uppercase tracking-widest whitespace-nowrap ${
+                            isPopular ? "bg-gold text-navy" : "bg-navy text-gold"
+                          }`}
+                          style={{ fontFamily: "var(--font-ui)", fontWeight: 700 }}
                         >
-                          <svg
-                            className="w-4 h-4 text-gold mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
+                          {tier.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="p-8 flex flex-col flex-1">
+                      <h3
+                        className={`text-xl mb-1 ${isPopular ? "text-white" : "text-navy"}`}
+                        style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+                      >
+                        {tier.name}
+                      </h3>
+                      <p
+                        className={`text-xs mb-5 uppercase tracking-wider ${
+                          isPopular ? "text-gold/60" : "text-charcoal/50"
+                        }`}
+                        style={{ fontFamily: "var(--font-ui)" }}
+                      >
+                        {tier.ideal}
+                      </p>
+
+                      <div className="flex items-baseline gap-1 mb-6">
+                        <span
+                          className="text-3xl text-gold"
+                          style={{ fontFamily: "var(--font-display)", fontWeight: 900 }}
+                        >
+                          {tier.price}
+                        </span>
+                        <span
+                          className={`text-sm ${isPopular ? "text-white/40" : "text-charcoal/50"}`}
+                          style={{ fontFamily: "var(--font-ui)" }}
+                        >
+                          {tier.period}
+                        </span>
+                      </div>
+
+                      <ul className="space-y-3 mb-8 flex-1">
+                        {tier.features.map((f) => (
+                          <li
+                            key={f}
+                            className={`flex items-start gap-2 text-sm ${
+                              isPopular ? "text-white/75" : "text-charcoal/70"
+                            }`}
                           >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
+                            <svg
+                              className="w-4 h-4 text-gold mt-0.5 flex-shrink-0"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
 
-                    <a
-                      href={tier.href}
-                      className={`text-center block rounded-full py-3 px-6 text-sm transition-all mb-6 ${
-                        tier.badge === "Most Popular"
-                          ? "btn-gold"
-                          : "border border-gold text-gold hover:bg-gold/10"
-                      }`}
-                      style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
-                    >
-                      {tier.cta}
-                    </a>
+                      <a
+                        href={tier.href}
+                        className={`text-center block rounded-full py-3 px-6 text-sm transition-all mb-6 ${
+                          isPopular
+                            ? "btn-gold"
+                            : "border border-gold text-gold hover:bg-gold/10"
+                        }`}
+                        style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                      >
+                        {tier.cta}
+                      </a>
 
-                    {/* Tier testimonial */}
-                    <div className="border-t border-gold/10 pt-5 mt-auto">
-                      <p
-                        className="text-charcoal/60 text-xs leading-relaxed italic mb-3"
-                        style={{ fontFamily: "var(--font-body)" }}
+                      {/* Tier testimonial */}
+                      <div
+                        className={`border-t pt-5 mt-auto ${
+                          isPopular ? "border-white/10" : "border-gold/10"
+                        }`}
                       >
-                        &ldquo;{testimonials[i].quote}&rdquo;
-                      </p>
-                      <p
-                        className="text-navy text-xs font-semibold"
-                        style={{ fontFamily: "var(--font-ui)" }}
-                      >
-                        — {testimonials[i].name}
-                      </p>
-                      <p
-                        className="text-charcoal/40 text-xs"
-                        style={{ fontFamily: "var(--font-ui)" }}
-                      >
-                        {testimonials[i].role}
-                      </p>
+                        <p
+                          className={`text-xs leading-relaxed italic mb-3 ${
+                            isPopular ? "text-white/50" : "text-charcoal/60"
+                          }`}
+                          style={{ fontFamily: "var(--font-body)" }}
+                        >
+                          &ldquo;{testimonials[i].quote}&rdquo;
+                        </p>
+                        <p
+                          className={`text-xs font-semibold ${isPopular ? "text-gold" : "text-navy"}`}
+                          style={{ fontFamily: "var(--font-ui)" }}
+                        >
+                          — {testimonials[i].name}
+                        </p>
+                        <p
+                          className={`text-xs ${isPopular ? "text-white/30" : "text-charcoal/40"}`}
+                          style={{ fontFamily: "var(--font-ui)" }}
+                        >
+                          {testimonials[i].role}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+                  </motion.div>
+                </AnimatedSection>
+              );
+            })}
           </div>
 
           {/* Single Session */}
@@ -690,15 +696,19 @@ export default function ServicesContent() {
               {costOfWaiting.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-white/5 border border-white/10 rounded-xl p-6"
+                  className="rounded-r-xl p-6"
+                  style={{
+                    borderLeft: "3px solid rgba(200,168,78,0.7)",
+                    background: "rgba(255,255,255,0.06)",
+                  }}
                 >
                   <p
-                    className="text-gold text-sm font-semibold mb-2 uppercase tracking-widest"
-                    style={{ fontFamily: "var(--font-ui)" }}
+                    className="text-gold font-semibold mb-2 uppercase tracking-widest"
+                    style={{ fontFamily: "var(--font-ui)", fontSize: "0.8rem" }}
                   >
                     {item.label}
                   </p>
-                  <p className="text-white/60 text-sm leading-relaxed">
+                  <p className="text-white/70 text-sm leading-relaxed">
                     {item.cost}
                   </p>
                 </div>
@@ -749,8 +759,8 @@ export default function ServicesContent() {
               <AnimatedSection key={item.step} delay={i * 0.1}>
                 <div className="text-center">
                   <span
-                    className="text-5xl text-gold/20"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 900 }}
+                    className="text-8xl text-gold/30"
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 900, lineHeight: 1 }}
                   >
                     {item.step}
                   </span>
