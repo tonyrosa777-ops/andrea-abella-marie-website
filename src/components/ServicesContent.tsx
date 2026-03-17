@@ -344,11 +344,11 @@ export default function ServicesContent() {
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 pt-4">
             {coachingTiers.map((tier, i) => (
               <AnimatedSection key={tier.name} delay={i * 0.1}>
                 <div
-                  className={`relative bg-white rounded-2xl overflow-hidden card-hover h-full flex flex-col ${
+                  className={`relative bg-white rounded-2xl card-hover h-full flex flex-col ${
                     tier.badge === "Most Popular"
                       ? "border-2 border-gold shadow-lg"
                       : "border border-gold/10"
