@@ -163,7 +163,7 @@ export default function ShopContent() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(135deg, #1B2A4A 0%, #2C4A7C 50%, #1B2A4A 100%)",
+            background: "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

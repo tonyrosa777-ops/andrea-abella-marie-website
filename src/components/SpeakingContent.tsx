@@ -46,7 +46,7 @@ export default function SpeakingContent() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #1B2A4A 0%, #2C4A7C 50%, #1B2A4A 100%)",
+              "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
         <div className="absolute inset-0 overflow-hidden">

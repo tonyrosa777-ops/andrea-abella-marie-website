@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #1B2A4A;
-  --color-navy-light: #2C4A7C;
+  --color-navy: #0D1F5C;
+  --color-navy-light: #1A3FA0;
   --color-gold: #C8A84E;
   --color-gold-light: #D4B96A;
   --color-cream: #F5F0E8;
@@ -31,7 +31,7 @@ body {
 .btn-gold {
   background: linear-gradient(90deg, #C8A84E, #D4B96A, #C8A84E);
   background-size: 200% 100%;
-  color: #1B2A4A;
+  color: #0D1F5C;
   font-family: var(--font-ui);
   font-weight: 600;
   padding: 0.875rem 2.5rem;
@@ -152,7 +152,7 @@ body {
 
 .card-hover:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(27, 42, 74, 0.12);
+  box-shadow: 0 20px 60px rgba(13, 31, 92, 0.15);
 }
 
 /* Nav link underline */

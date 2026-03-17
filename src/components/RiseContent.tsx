@@ -13,7 +13,7 @@ export default function RiseContent() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, #1B2A4A 0%, #2C4A7C 30%, #1B2A4A 70%, #2C4A7C 100%)",
+              "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 30%, #0D1F5C 70%, #1A3FA0 100%)",
           }}
         />
         {/* Starfield */}

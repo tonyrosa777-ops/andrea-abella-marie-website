@@ -76,7 +76,7 @@ export default function ServicesOverview() {
                         "linear-gradient(90deg, #C8A84E, #D4B96A, #C8A84E)",
                       fontFamily: "var(--font-ui)",
                       fontWeight: 700,
-                      color: "#1B2A4A",
+                      color: "#0D1F5C",
                       letterSpacing: "1px",
                       textTransform: "uppercase",
                     }}
