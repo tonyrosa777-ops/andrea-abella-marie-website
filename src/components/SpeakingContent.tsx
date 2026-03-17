@@ -11,6 +11,7 @@ const topics = [
       "A gentle, trauma-informed talk on regulation, boundaries, and rebuilding internal safety. Perfect for corporate wellness programs, veteran organizations, and community health events.",
     duration: "45-90 minutes",
     format: "Keynote / Workshop",
+    audience: "Corporate wellness, veteran orgs, community health events",
   },
   {
     title: "The Invisible Armor: Understanding Survival Mode in High-Achievers",
@@ -18,6 +19,7 @@ const topics = [
       "Exploring how trauma shows up as perfectionism, people-pleasing, and emotional numbing — and how to begin removing the armor safely.",
     duration: "45-60 minutes",
     format: "Keynote / Panel",
+    audience: "Leadership conferences, corporate events, professional associations",
   },
   {
     title: "From Surviving to Thriving: A Nervous System Regulation Workshop",
@@ -25,6 +27,7 @@ const topics = [
       "An interactive, experiential workshop where attendees learn practical grounding and regulation tools they can use immediately.",
     duration: "90-120 minutes",
     format: "Interactive Workshop",
+    audience: "Retreats, wellness days, intimate group settings",
   },
 ];
 
@@ -37,6 +40,11 @@ export default function SpeakingContent() {
     eventType: "",
     message: "",
   });
+
+  function selectTopic(title: string) {
+    setFormData((prev) => ({ ...prev, eventType: title }));
+    document.getElementById("speaking-inquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
     <>
@@ -116,39 +124,43 @@ export default function SpeakingContent() {
           <div className="space-y-6">
             {topics.map((topic, i) => (
               <AnimatedSection key={topic.title} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-8 border border-gold/10 card-hover">
-                  <div className="flex flex-wrap gap-3 mb-4">
-                    <span
-                      className="px-3 py-1 bg-gold/10 text-gold text-xs rounded-full"
-                      style={{
-                        fontFamily: "var(--font-ui)",
-                        fontWeight: 600,
-                      }}
+                <div className="bg-white rounded-2xl p-8 border border-gold/10 card-hover flex flex-col md:flex-row md:items-center gap-6">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap gap-3 mb-4">
+                      <span
+                        className="px-3 py-1 bg-gold/10 text-gold text-xs rounded-full"
+                        style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                      >
+                        {topic.format}
+                      </span>
+                      <span
+                        className="px-3 py-1 bg-navy/5 text-navy text-xs rounded-full"
+                        style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                      >
+                        {topic.duration}
+                      </span>
+                    </div>
+                    <h3
+                      className="text-xl text-navy mb-3"
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
                     >
-                      {topic.format}
-                    </span>
-                    <span
-                      className="px-3 py-1 bg-navy/5 text-navy text-xs rounded-full"
-                      style={{
-                        fontFamily: "var(--font-ui)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {topic.duration}
-                    </span>
+                      {topic.title}
+                    </h3>
+                    <p className="text-charcoal/70 leading-relaxed mb-3">
+                      {topic.description}
+                    </p>
+                    <p className="text-xs text-charcoal/40 uppercase tracking-wider" style={{ fontFamily: "var(--font-ui)" }}>
+                      Best for: {topic.audience}
+                    </p>
                   </div>
-                  <h3
-                    className="text-xl text-navy mb-3"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {topic.title}
-                  </h3>
-                  <p className="text-charcoal/70 leading-relaxed">
-                    {topic.description}
-                  </p>
+                  <div className="shrink-0">
+                    <button
+                      onClick={() => selectTopic(topic.title)}
+                      className="btn-gold whitespace-nowrap"
+                    >
+                      Book This Topic
+                    </button>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -157,7 +169,7 @@ export default function SpeakingContent() {
       </section>
 
       {/* Booking Inquiry */}
-      <section className="py-20 md:py-28" style={{ background: "var(--color-parchment)" }}>
+      <section id="speaking-inquiry" className="py-20 md:py-28" style={{ background: "var(--color-parchment)" }}>
         <div className="max-w-3xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center mb-12">
@@ -218,6 +230,24 @@ export default function SpeakingContent() {
                   />
                 </div>
               </div>
+
+              {/* Selected topic indicator */}
+              {formData.eventType && (
+                <div className="flex items-center justify-between bg-gold/10 border border-gold/20 rounded-xl px-4 py-3">
+                  <div>
+                    <p className="text-xs text-gold uppercase tracking-wider mb-1" style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}>Selected Topic</p>
+                    <p className="text-navy text-sm" style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}>{formData.eventType}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setFormData((prev) => ({ ...prev, eventType: "" }))}
+                    className="text-charcoal/40 hover:text-charcoal text-xs underline ml-4"
+                    style={{ fontFamily: "var(--font-ui)" }}
+                  >
+                    Change
+                  </button>
+                </div>
+              )}
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
