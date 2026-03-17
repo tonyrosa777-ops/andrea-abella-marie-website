@@ -5,6 +5,7 @@ import ThreePillars from "@/components/ThreePillars";
 import AboutPreview from "@/components/AboutPreview";
 import ServicesOverview from "@/components/ServicesOverview";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import BlogPreview from "@/components/BlogPreview";
 import ShopPreview from "@/components/ShopPreview";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <AboutPreview />
         <ServicesOverview />
         <TestimonialsCarousel />
+        <BlogPreview />
         <ShopPreview />
         <Newsletter />
       </main>
