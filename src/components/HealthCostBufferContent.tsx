@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 import { healthCostBuffer } from "@/lib/services";
 
 export default function HealthCostBufferContent() {
@@ -16,6 +17,7 @@ export default function HealthCostBufferContent() {
               "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0 }}

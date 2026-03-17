@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 import { useCart } from "@/lib/cart";
 import seededProducts from "@/lib/printful-seeded-products.json";
 
@@ -166,6 +167,7 @@ export default function ShopContent() {
             background: "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0 }}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 import { posts } from "@/lib/blog";
 
 const categories = [
@@ -83,6 +84,7 @@ export default function BlogContent() {
               "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 
 const credentials = [
   {
@@ -58,25 +59,7 @@ export default function AboutContent() {
               "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
-        <div className="absolute inset-0 opacity-20">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <div
-              key={i}
-              className="star"
-              style={{
-                position: "absolute",
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: Math.random() * 2 + 1,
-                height: Math.random() * 2 + 1,
-                background: "#fff",
-                borderRadius: "50%",
-                animation: `twinkle ${Math.random() * 4 + 2}s ease-in-out infinite alternate`,
-                animationDelay: `${Math.random() * 3}s`,
-              }}
-            />
-          ))}
-        </div>
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0 }}

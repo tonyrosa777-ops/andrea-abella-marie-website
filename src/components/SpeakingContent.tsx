@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 
 const credentials = [
   { value: "8 Years", label: "U.S. Navy Service" },
@@ -87,25 +88,7 @@ export default function SpeakingContent() {
           className="absolute inset-0"
           style={{ background: "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)" }}
         />
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <div
-              key={i}
-              style={{
-                position: "absolute",
-                top: `${(i * 37 + 11) % 100}%`,
-                left: `${(i * 53 + 7) % 100}%`,
-                width: i % 5 === 0 ? 2.5 : 1.5,
-                height: i % 5 === 0 ? 2.5 : 1.5,
-                background: "#fff",
-                borderRadius: "50%",
-                opacity: 0.4 + (i % 3) * 0.2,
-                animation: `twinkle ${3 + (i % 4)}s ease-in-out infinite alternate`,
-                animationDelay: `${(i % 5) * 0.6}s`,
-              }}
-            />
-          ))}
-        </div>
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="section-label mb-6">
             Speaking & Workshops

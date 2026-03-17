@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import HeroStars from "./HeroStars";
 import { coachingTiers, singleSession } from "@/lib/services";
 
 const faqs = [
@@ -106,6 +107,7 @@ export default function ServicesContent() {
               "linear-gradient(135deg, #0D1F5C 0%, #1A3FA0 50%, #0D1F5C 100%)",
           }}
         />
+        <HeroStars />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0 }}
@@ -151,10 +153,6 @@ export default function ServicesContent() {
         </div>
       </section>
 
-      {/* Gold bridge divider */}
-      <div className="h-px" style={{ background: "linear-gradient(90deg, transparent 0%, rgba(200,168,78,0.6) 50%, transparent 100%)" }} />
-
-      {/* Credential Strip */}
       <section className="py-5 border-b border-gold/20" style={{ background: "#0A1845" }}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
