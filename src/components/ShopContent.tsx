@@ -255,7 +255,7 @@ export default function ShopContent() {
                 className="text-center text-charcoal/50 text-sm mb-10"
                 style={{ fontFamily: "var(--font-ui)" }}
               >
-                Ships directly from Andrea · Each piece is meaningful and limited
+                Meaningful pieces. Limited availability.
               </p>
             </AnimatedSection>
 
