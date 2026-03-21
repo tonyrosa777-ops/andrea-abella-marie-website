@@ -29,6 +29,24 @@ const testimonials = [
     role: "Corporate Executive",
     stars: 5,
   },
+  {
+    text: "Andrea did a great job of making me feel safe and protected while she performed her energy healing on me. I was relaxed and saw great images and light as she turned and tuned my chakras. I felt a wellbeing of calm and peacefulness after the session. Thank you for sharing your gift with me.",
+    name: "Tim Thomas",
+    role: "Energy Healing Client",
+    stars: 5,
+  },
+  {
+    text: "Andrea was simply present in a way that meant the world to me. She listened, guided, and supported me without judgment. Through small steps, accountability, and coaching, Andrea helped me start moving again. But what helped the most was how deeply she listened and cared. Her heart is huge and she is such a warm, genuine person. That makes it so easy for people to open up to her.",
+    name: "Lydia T.",
+    role: "Coaching Client",
+    stars: 5,
+  },
+  {
+    text: "I served with Andrea overseas in a combat environment and she has earned my trust. I sought out her assistance as I transitioned from uniform to civilian life. It may sound simple but was baffling to me. It was natural to her — she explained and displayed options for every situation. If I ever need any assistance she provides, I would definitely look to her.",
+    name: "Joseph N.",
+    role: "Fellow Veteran",
+    stars: 5,
+  },
 ];
 
 function StarRating({ count }: { count: number }) {

@@ -41,6 +41,24 @@ const testimonials = [
     text: "I've had people try to help me before. Therapists, programs, the whole VA carousel. Most meant well but I could tell they didn't really get it. Andrea gets it. She's not reading from a script. She's been in it. That made all the difference.",
     stars: 5,
   },
+  {
+    name: "Tim Thomas",
+    role: "Energy Healing Client",
+    text: "Andrea did a great job of making me feel safe and protected while she performed her energy healing on me. I was relaxed and saw great images and light as she turned and tuned my chakras. I felt a wellbeing of calm and peacefulness after the session. Thank you for sharing your gift with me.",
+    stars: 5,
+  },
+  {
+    name: "Lydia T.",
+    role: "Coaching Client",
+    text: "Andrea was simply present in a way that meant the world to me. She listened, guided, and supported me without judgment. I was stuck — depressed, anxious, in pain, and so out of shape that I felt like I couldn't move forward in my life. Through small steps, accountability, and coaching, Andrea helped me start moving again. But what helped the most was how deeply she listened and cared. Her heart is huge and she is such a warm, genuine person. That makes it so easy for people to open up to her.",
+    stars: 5,
+  },
+  {
+    name: "Joseph N.",
+    role: "Fellow Veteran",
+    text: "I can't say how much Andrea has helped me. I have served with her overseas in a combat environment and she has earned my trust. I sought out her assistance as I transitioned from working in uniform to civilian dress. It may sound simple but was baffling to me. It was natural to her and she explained and displayed clothing options for every situation. If I ever seek any assistance she provides, I would definitely look to her for assistance.",
+    stars: 5,
+  },
 ];
 
 export default function TestimonialsContent() {

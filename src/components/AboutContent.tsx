@@ -18,6 +18,14 @@ const credentials = [
     name: "Global Coaches Association (GCA) Member",
     level: "Gold",
   },
+  {
+    name: "ProCoach Certification™ — 90-Hour Program",
+    level: "ProCoach",
+  },
+  {
+    name: "ProCoach Masters™ — 150-Hour Program",
+    level: "Master",
+  },
 ];
 
 const timeline = [
@@ -301,7 +309,7 @@ export default function AboutContent() {
             </h2>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {credentials.map((cred, i) => (
               <AnimatedSection key={cred.name} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl p-8 card-hover border border-gold/10 text-center">

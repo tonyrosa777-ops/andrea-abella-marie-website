@@ -75,7 +75,7 @@ const credentials = [
   { stat: "100%", label: "Service-Connected PTSD" },
   { stat: "M.P.H.", label: "Public Health Nutrition" },
   { stat: "4", label: "Published Books" },
-  { stat: "GCA", label: "Certified Coach" },
+  { stat: "ProCoach", label: "Masters™ Certified" },
 ];
 
 const costOfWaiting = [

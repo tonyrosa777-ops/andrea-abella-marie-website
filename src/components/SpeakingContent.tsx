@@ -11,7 +11,7 @@ const credentials = [
   { value: "100%", label: "Service-Connected PTSD" },
   { value: "M.P.H.", label: "Public Health Nutrition" },
   { value: "4", label: "Published Books" },
-  { value: "GCA", label: "Certified Coach" },
+  { value: "ProCoach", label: "Masters™ Certified" },
 ];
 
 const included = [
