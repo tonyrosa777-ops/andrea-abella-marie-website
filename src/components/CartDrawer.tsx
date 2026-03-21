@@ -196,7 +196,7 @@ export default function CartDrawer() {
                   </span>
                 </div>
                 <p className="text-white/30 text-xs text-center" style={{ fontFamily: "var(--font-ui)" }}>
-                  Shipping calculated at checkout · Fulfilled by Printful
+                  Shipping calculated at checkout · Print-on-demand fulfilled by Printful · Handcrafted items ship from Andrea
                 </p>
                 <button
                   onClick={handleCheckout}

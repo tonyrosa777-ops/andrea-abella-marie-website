@@ -8,8 +8,9 @@ import AnimatedSection from "./AnimatedSection";
 import HeroStars from "./HeroStars";
 import { useCart } from "@/lib/cart";
 import seededProducts from "@/lib/printful-seeded-products.json";
+import { resilienceCollection, type ResilienceProduct } from "@/lib/resilience-collection";
 
-const CATEGORIES = ["All", "Apparel", "Drinkware", "Bags", "Home & Stationery", "Accessories"];
+const CATEGORIES = ["All", "The Resilience Collection", "Apparel", "Drinkware", "Bags", "Home & Stationery", "Accessories"];
 
 interface PrintfulProduct {
   id: number;
@@ -71,7 +72,7 @@ export default function ShopContent() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [products, setProducts] = useState<NormalizedProduct[]>([]);
   const [loading, setLoading] = useState(true);
-  const [addedId, setAddedId] = useState<number | null>(null);
+  const [addedId, setAddedId] = useState<number | string | null>(null);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -137,6 +138,20 @@ export default function ShopContent() {
     activeCategory === "All"
       ? products
       : products.filter((p) => p.category === activeCategory);
+
+  function handleAddResilienceItem(product: ResilienceProduct) {
+    if (product.stock === 0) return;
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: product.image,
+      category: product.category,
+    });
+    setAddedId(product.id);
+    setTimeout(() => setAddedId(null), 1500);
+  }
 
   function handleAddToCart(product: NormalizedProduct) {
     const price = seededPrices[product.id] ?? product.price ?? 0;
@@ -220,7 +235,116 @@ export default function ShopContent() {
         </div>
       </section>
 
+      {/* Resilience Collection */}
+      {(activeCategory === "All" || activeCategory === "The Resilience Collection") && (
+        <section className="py-16 md:py-24 bg-cream grain-texture">
+          <div className="max-w-6xl mx-auto px-6">
+            <AnimatedSection>
+              <div className="flex items-center gap-4 mb-2">
+                <div className="h-px flex-1 bg-gold/30" />
+                <p className="section-label">Handcrafted · Limited</p>
+                <div className="h-px flex-1 bg-gold/30" />
+              </div>
+              <h2
+                className="text-2xl md:text-3xl text-navy text-center mb-2"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+              >
+                The <span className="text-gold italic">Resilience Collection</span>
+              </h2>
+              <p
+                className="text-center text-charcoal/50 text-sm mb-10"
+                style={{ fontFamily: "var(--font-ui)" }}
+              >
+                Ships directly from Andrea · Each piece is meaningful and limited
+              </p>
+            </AnimatedSection>
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {resilienceCollection.map((product, i) => {
+                const isAdded = addedId === product.id;
+                const outOfStock = product.stock === 0;
+                const stockLabel =
+                  product.stock === 0
+                    ? "Out of Stock"
+                    : product.stock === 1
+                    ? "Last one!"
+                    : product.stock <= 3
+                    ? `Only ${product.stock} left`
+                    : `${product.stock} in stock`;
+                return (
+                  <AnimatedSection key={product.id} delay={i * 0.08}>
+                    <div className="bg-white rounded-2xl overflow-hidden card-hover border border-gold/20 h-full flex flex-col">
+                      <div className="aspect-square relative overflow-hidden bg-parchment">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover object-center"
+                          loading="lazy"
+                        />
+                        {/* Ships from Andrea badge */}
+                        <div className="absolute top-3 left-3">
+                          <span
+                            className="px-2 py-1 rounded-full text-[9px] uppercase tracking-widest bg-gold/90 text-navy"
+                            style={{ fontFamily: "var(--font-ui)", fontWeight: 700 }}
+                          >
+                            Ships from Andrea
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <span
+                          className="text-[10px] uppercase tracking-widest text-gold/70 mb-1"
+                          style={{ fontFamily: "var(--font-ui)" }}
+                        >
+                          The Resilience Collection
+                        </span>
+                        <h3
+                          className="text-base text-navy mb-1 flex-1"
+                          style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+                        >
+                          {product.name}
+                        </h3>
+                        <p
+                          className={`text-xs mb-3 ${outOfStock ? "text-charcoal/40" : "text-gold"}`}
+                          style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                        >
+                          {stockLabel}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span
+                            className="text-xl text-gold"
+                            style={{ fontFamily: "var(--font-display)", fontWeight: 900 }}
+                          >
+                            ${product.price}
+                          </span>
+                          <button
+                            onClick={() => handleAddResilienceItem(product)}
+                            disabled={outOfStock}
+                            className={`px-4 py-2 text-sm rounded-full transition-all ${
+                              outOfStock
+                                ? "border border-charcoal/20 text-charcoal/30 cursor-not-allowed"
+                                : isAdded
+                                ? "bg-gold text-navy border border-gold"
+                                : "border border-gold text-gold hover:bg-gold/10"
+                            }`}
+                            style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                          >
+                            {outOfStock ? "Out of Stock" : isAdded ? "Added!" : "Add to Cart"}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Products Grid */}
+      {activeCategory !== "The Resilience Collection" && (
       <section className="py-16 md:py-24" style={{ background: "var(--color-parchment)" }}>
         <div className="max-w-6xl mx-auto px-6">
 
@@ -306,6 +430,7 @@ export default function ShopContent() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Note */}
       <section className="py-12 bg-navy text-center">
