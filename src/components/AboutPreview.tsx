@@ -123,6 +123,22 @@ export default function AboutPreview() {
                     </span>
                     Global Coaches Association
                   </span>
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-navy text-xs border border-navy/10"
+                    style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                  >
+                    <span className="w-5 h-5 rounded-full bg-navy flex items-center justify-center text-[8px] text-white font-bold">
+                      PC
+                    </span>
+                    ProCoach Certified
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-navy text-xs border border-navy/10"
+                    style={{ fontFamily: "var(--font-ui)", fontWeight: 600 }}
+                  >
+                    <span className="w-5 h-5 rounded-full bg-navy flex items-center justify-center text-[8px] text-white font-bold">
+                      PM
+                    </span>
+                    ProCoach Masters™
+                  </span>
                 </div>
               </div>
             </AnimatedSection>
