@@ -10,7 +10,7 @@ const credentials = [
   { value: "E-6", label: "Petty Officer First Class" },
   { value: "100%", label: "Service-Connected PTSD" },
   { value: "M.P.H.", label: "Public Health Nutrition" },
-  { value: "4", label: "Published Books" },
+  { value: "5", label: "Published Books" },
   { value: "ProCoach", label: "Masters™ Certified" },
 ];
 

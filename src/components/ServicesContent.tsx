@@ -74,7 +74,7 @@ const credentials = [
   { stat: "E-6", label: "Petty Officer First Class" },
   { stat: "100%", label: "Service-Connected PTSD" },
   { stat: "M.P.H.", label: "Public Health Nutrition" },
-  { stat: "4", label: "Published Books" },
+  { stat: "5", label: "Published Books" },
   { stat: "ProCoach", label: "Masters™ Certified" },
 ];
 
