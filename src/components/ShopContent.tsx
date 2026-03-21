@@ -281,14 +281,15 @@ export default function ShopContent() {
                           fill
                           className="object-cover object-center"
                           loading="lazy"
+                          unoptimized
                         />
-                        {/* Ships from Andrea badge */}
+                        {/* Limited supply badge */}
                         <div className="absolute top-3 left-3">
                           <span
                             className="px-2 py-1 rounded-full text-[9px] uppercase tracking-widest bg-gold/90 text-navy"
                             style={{ fontFamily: "var(--font-ui)", fontWeight: 700 }}
                           >
-                            Ships from Andrea
+                            Limited Supply
                           </span>
                         </div>
                       </div>
